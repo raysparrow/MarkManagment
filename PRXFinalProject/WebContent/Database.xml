@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Students xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="DBValidate.xsd">
+    <Student>
+        <StudentName>Nguyen Van A</StudentName>
+        <StudentID>SE11111</StudentID>
+        <Classes>
+            <ClassName>IS1104</ClassName>
+            <ClassName>IS1105</ClassName>
+        </Classes>
+        <Subjects>
+            <Subject>
+                <Teacher>sonnt5</Teacher>
+                <SubjectID>DBW301</SubjectID>
+                <SubjectName>Data warehouse</SubjectName>
+                <PT1>5</PT1>
+                <PT2>5</PT2>
+                <ASS>5</ASS>
+                <FinalExam>5</FinalExam>
+                <TotalMark>5</TotalMark>    
+            </Subject>
+            <Subject>
+                <Teacher>AnhBN</Teacher>
+                <SubjectID>PRX301</SubjectID>
+                <SubjectName>Web Development (XML)</SubjectName>
+                <PT1>5</PT1>
+                <PT2>5</PT2>
+                <ASS>5</ASS>
+                <FinalExam>5</FinalExam>
+                <TotalMark>5</TotalMark>    
+            </Subject>
+            <Subject>
+                <Teacher>anhpn</Teacher>
+                <SubjectID>MLN101</SubjectID>
+                <SubjectName>Principles of Marxism - Leninism</SubjectName>
+                <PT1>5</PT1>
+                <PT2>5</PT2>
+                <ASS>5</ASS>
+                <FinalExam>5</FinalExam>
+                <TotalMark>5</TotalMark>    
+            </Subject>
+        </Subjects>
+    </Student>
+    <Student>
+        <StudentName>Nguyen Van B</StudentName>
+        <StudentID>SE22222</StudentID>
+        <Classes>
+            <ClassName>IS1104</ClassName>
+        </Classes>
+        <Subjects>
+            <Subject>
+                <Teacher>AnhBN</Teacher>
+                <SubjectID>PRX301</SubjectID>
+                <SubjectName>Web Development (XML)</SubjectName>
+                <PT1>5</PT1>
+                <PT2>5</PT2>
+                <ASS>5</ASS>
+                <FinalExam>5</FinalExam>
+                <TotalMark>5</TotalMark>    
+            </Subject>
+            <Subject>
+                <Teacher>anhpn</Teacher>
+                <SubjectID>MLN101</SubjectID>
+                <SubjectName>Principles of Marxism - Leninism</SubjectName>
+                <PT1>5</PT1>
+                <PT2>5</PT2>
+                <ASS>5</ASS>
+                <FinalExam>5</FinalExam>
+                <TotalMark>5</TotalMark>    
+            </Subject>
+        </Subjects>
+    </Student>
+    <Teacher>
+        <TeacherID>sonnt5</TeacherID>
+        <TeacherName>Ngô Tùng Sơn</TeacherName>
+        <Mail>sonnt69@fe.edu.vn</Mail>
+    </Teacher>
+    <Teacher>
+        <TeacherID>AnhBN</TeacherID>
+        <TeacherName>Bùi Ngọc Anh</TeacherName>
+        <Mail>AnhBN5@fe.edu.vn</Mail>
+    </Teacher>
+    <Teacher>
+        <TeacherID>anhpn</TeacherID>
+        <TeacherName>Phạm Ngọc Anh</TeacherName>
+        <Mail>AnhPN16@fe.edu.vn</Mail>
+    </Teacher>
+</Students>
