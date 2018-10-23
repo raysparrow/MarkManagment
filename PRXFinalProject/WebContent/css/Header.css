@@ -1,0 +1,65 @@
+/*CSS for only header*/
+.vl{
+    border-left: 2px solid;
+    height: 20px;
+}
+#wel{
+    width: 60%;
+}
+#log{
+    width: 10%;
+}
+#img{
+    width: 80%;
+    height: 100px;
+    float: left;
+}
+#wel-log{
+    width: 150px;
+    height: 100px;
+    margin-left: 30px;
+}
+.Header{
+    position:fixed;
+}
+/*CSS for any html*/
+.left{
+    float: left;
+}
+.margin_top_40px{
+    margin-top: 40px;
+}
+.margin_left_5{
+    margin-left: 5%;
+}
+
+/*CSS for menu*/
+.navbar{
+    overflow: hidden;
+    width: 100%;
+}
+.navbar a{
+    float: left;
+    display: block;
+    background-color: #333;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    width: 30%;
+    border-left: solid 0.1px white;
+    border-bottom: solid 0.1px white;
+}
+.navbar a:hover{
+    background: #ddd;
+    color: black;
+    border-bottom-right-radius: 20%;
+    border-bottom-left-radius: 20%;
+}
+.navbar a.active{
+    background-color: green;
+    color: white;
+    border-bottom-right-radius: 20%;
+    border-bottom-left-radius: 20%;
+}
