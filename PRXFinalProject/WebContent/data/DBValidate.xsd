@@ -48,6 +48,7 @@
         <xs:sequence>
             <xs:element name="TeacherID" type="xs:string" />
             <xs:element name="TeacherName" type="xs:string" />
+            <xs:element name="Phone" type="xs:string" />
             <xs:element name="Mail" type="xs:string" />
         </xs:sequence>
     </xs:complexType>

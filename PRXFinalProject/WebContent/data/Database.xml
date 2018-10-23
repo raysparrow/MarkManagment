@@ -73,16 +73,19 @@
     <Teacher>
         <TeacherID>sonnt5</TeacherID>
         <TeacherName>Ngô Tùng Sơn</TeacherName>
+        <Phone>0999999999</Phone>
         <Mail>sonnt69@fe.edu.vn</Mail>
     </Teacher>
     <Teacher>
         <TeacherID>AnhBN</TeacherID>
         <TeacherName>Bùi Ngọc Anh</TeacherName>
+        <Phone>0999999999</Phone>
         <Mail>AnhBN5@fe.edu.vn</Mail>
     </Teacher>
     <Teacher>
         <TeacherID>anhpn</TeacherID>
         <TeacherName>Phạm Ngọc Anh</TeacherName>
+        <Phone>0999999999</Phone>
         <Mail>AnhPN16@fe.edu.vn</Mail>
     </Teacher>
 </Students>
