@@ -21,7 +21,41 @@
 	<div class="navbar">
 		<a class="active" href="#home">Home</a> <a href="#news">News</a> <a href="#contact">Contact</a>
 	</div>
-	<div>
-	</div>
+	<table id="homeTBL" class="margin_top_40px"></table>
+	<script>
+		loadXMLDoc();
+		function loadXMLDoc() {
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					myFunction(this);
+				}
+			};
+			xmlhttp.open("GET", "data/Database.xml", true);
+			xmlhttp.send();
+		}
+		function myFunction(xml) {
+			var i;
+			var xmlDoc = xml.responseXML;
+			var table = "<tr><th>Subject ID</th><th>Subject Name</th><th>Number of credits</th><th>Average Mark</th></tr>";
+			var x = xmlDoc.getElementsByTagName("Student");
+			for (i = 0; i < x.length; i++) {
+				if (x[i].getElementsByTagName("StudentID")[0].childNodes[0].nodeValue == "SE11111") {
+					var y = x[i].getElementsByTagName("Subject");
+					for (j = 0; j < y.length; j++) {
+						table += "<tr><td>"
+								+ y[j].getElementsByTagName("SubjectID")[0].childNodes[0].nodeValue
+								+ "</td><td>"
+								+ y[j].getElementsByTagName("SubjectName")[0].childNodes[0].nodeValue
+								+ "</td><td>3</td><td>"
+								+ y[j].getElementsByTagName("TotalMark")[0].childNodes[0].nodeValue
+								+ "</td></tr>";
+					}
+				}
+
+			}
+			document.getElementById("homeTBL").innerHTML = table;
+		}
+	</script>
 </body>
 </html>
