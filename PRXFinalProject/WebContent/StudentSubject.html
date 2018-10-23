@@ -121,15 +121,24 @@
 									+ tMail
 									+ "</p></div>"
 									+ "</div><div class=\"marktb\">"
-									+ "<table style=\"width:80%; border: 1px solid #ccc\"><tr><th>"
+									+ "<table style=\"width:100%\"><tr><th>"
 									+ "Grade ID</th><th>Weight</th><th>Value</th></tr>"
-									+ "<tr><td>"
+									+ "<tr><td>PT1</td><td>10%</td><td>"
 									+ y[j].getElementsByTagName("PT1")[0].childNodes[0].nodeValue
-									+ "</td><td>"
+									+ "</td></tr>"
+									+ "<tr><td>PT2</td><td>10%</td><td>"
 									+ y[j].getElementsByTagName("PT2")[0].childNodes[0].nodeValue
-									+ "</td><td>"
+									+ "</td></tr>"
+									+ "<tr><td>ASS</td><td>10%</td><td>"
 									+ y[j].getElementsByTagName("ASS")[0].childNodes[0].nodeValue
-									+ "</td></tr></table></div></div></div>";
+									+ "</td></tr>"
+									+ "<tr><td>FinalExam</td><td>10%</td><td>"
+									+ y[j].getElementsByTagName("FinalExam")[0].childNodes[0].nodeValue
+									+ "</td></tr>"
+									+ "<tr><td>TotalMark</td><td>10%</td><td>"
+									+ y[j].getElementsByTagName("TotalMark")[0].childNodes[0].nodeValue
+									+ "</td></tr>"
+									+"</table></div></div></div>";
 						}
 					}
 
