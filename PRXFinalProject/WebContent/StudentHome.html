@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="css/StudentHome.css">
 </head>
 <body>
+<div class="wrap">
 	<div id="header">
 		<img id="img" alt="headerIMG" src="img/error.PNG" />
 		<div id="wel-log" class="left">
@@ -17,11 +18,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="navbar margin_left_10">
-		<a class="active" href="#home">Home</a> <a href="#news">News</a> <a
+	<div class="navbar">
+		<a class="active" href="#home">Home</a> <a href="StudentSubject.html">Subjects</a> <a
 			href="#contact">Contact</a>
 	</div>
-	<table id="homeTBL" class="margin_top_40px"></table>
+	<table id="homeTBL"></table>
 	<script>
 		loadXMLDoc();
 		function loadXMLDoc() {
@@ -57,5 +58,6 @@
 			document.getElementById("homeTBL").innerHTML = table;
 		}
 	</script>
+	</div>
 </body>
 </html>

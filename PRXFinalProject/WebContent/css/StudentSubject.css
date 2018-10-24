@@ -7,8 +7,7 @@ body {font-family: "Lato", sans-serif;}
     display: inline-block;
     border: 10px solid black;
     margin-top:10px;
-    width:80%;
-    margin-left:10%;
+    width:100%;
 }
 
 /* Style the tab */

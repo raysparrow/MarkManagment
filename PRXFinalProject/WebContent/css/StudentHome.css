@@ -3,8 +3,8 @@ table, th, td{
     border-collapse:collapse;
 }
 table{
-    width:80%;
-    margin-left:10%;
+    width:100%;
+    margin-top:10px;
 }
 * {box-sizing: border-box}
 body {font-family: "Lato", sans-serif;}

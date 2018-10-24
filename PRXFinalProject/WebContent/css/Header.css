@@ -10,10 +10,9 @@
     width: 10%;
 }
 #img{
-    width: 60%;
+    width: 80%;
     height: 100px;
     float: left;
-    margin-left:10%;
 }
 #wel-log{
     width: 150px;
@@ -22,7 +21,7 @@
 }
 .Header{
     position:fixed;
-    width:80%;
+    width:100%;
 }
 /*CSS for any html*/
 .left{
@@ -41,7 +40,7 @@
 /*CSS for menu*/
 .navbar{
     overflow: hidden;
-    width: 80%;
+    width: 100%;
     background-color: #333;
 }
 .navbar a{
@@ -65,4 +64,9 @@
     color: white;
     border-bottom-right-radius: 20%;
     border-bottom-left-radius: 20%;
+}
+.wrap {
+    width: 80%;
+    height: auto;
+    margin:auto;
 }
