@@ -5,21 +5,20 @@
 <title>Mark Management</title>
 <link rel="stylesheet" type="text/css" href="css/Header.css">
 <link rel="stylesheet" type="text/css" href="css/StudentSubject.css">
-<script src="https://code.jquery.com/jquery-3.3.1.js"
-	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-	crossorigin="anonymous">
-	
-</script>
-<script>
-	$(function() {
-		$("#header").load("header/Header.html");
-	});
-</script>
 </head>
 <body>
-	<div id="header"></div>
-	<div class="navbar">
-		<a class="active" href="#home">Home</a> <a href="#news">Subject</a> <a
+	<div id="header">
+		<img id="img" alt="headerIMG" src="img/error.PNG" />
+		<div id="wel-log" class="left">
+			<div id="wel" class="left margin_top_40px">Welcome, Duy</div>
+			<div class="vl left margin_top_40px margin_left_5"></div>
+			<div id="log" class="left margin_top_40px margin_left_5">
+				<a href="#">Logout</a>
+			</div>
+		</div>
+	</div>
+	<div class="navbar margin_left_10">
+		<a href="#home">Home</a> <a class="active" href="#news">Subject</a> <a
 			href="#contact">Student Profile</a>
 	</div>
 

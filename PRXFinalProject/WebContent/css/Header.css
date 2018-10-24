@@ -4,15 +4,16 @@
     height: 20px;
 }
 #wel{
-    width: 60%;
+    width: 68%;
 }
 #log{
     width: 10%;
 }
 #img{
-    width: 80%;
+    width: 60%;
     height: 100px;
     float: left;
+    margin-left:10%;
 }
 #wel-log{
     width: 150px;
@@ -21,6 +22,7 @@
 }
 .Header{
     position:fixed;
+    width:80%;
 }
 /*CSS for any html*/
 .left{
@@ -32,11 +34,15 @@
 .margin_left_5{
     margin-left: 5%;
 }
+.margin_left_10{
+    margin-left:10%;
+}
 
 /*CSS for menu*/
 .navbar{
     overflow: hidden;
-    width: 100%;
+    width: 80%;
+    background-color: #333;
 }
 .navbar a{
     float: left;
@@ -44,11 +50,9 @@
     background-color: #333;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 15.02%;
+    padding: 14px 4%;
     text-decoration: none;
     font-size: 17px;
-    border-left: solid 0.1px white;
-    border-bottom: solid 0.1px white;
 }
 .navbar a:hover{
     background: #ddd;
