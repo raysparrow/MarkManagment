@@ -12,6 +12,12 @@
         <xs:sequence>
             <xs:element name="StudentName" type="xs:string"/>
             <xs:element name="StudentID" type="studentIDCheck"/>
+            <xs:element name="StudentMail" type="xs:string"/>
+            <xs:element name="StudentPhone" type="xs:string"/>
+            <xs:element name="StudentDOB" type="xs:string"/>
+            <xs:element name="StudentSex" type="xs:string"/>
+            <xs:element name="StudentCourse" type="xs:string"/>
+            <xs:element name="StudentGPA" type="xs:double"/>
             <xs:element name="Classes" type="classDetail" />
             <xs:element name="Subjects" type="subjectDetail"/>
         </xs:sequence>

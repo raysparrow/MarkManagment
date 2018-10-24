@@ -4,6 +4,12 @@
     <Student>
         <StudentName>Nguyen Van A</StudentName>
         <StudentID>SE11111</StudentID>
+        <StudentMail>AnvSE11111@fpt.edu.vn</StudentMail>
+        <StudentPhone>0123 456 789</StudentPhone>
+        <StudentDOB>12/12/2018</StudentDOB>
+        <StudentSex>Male</StudentSex>
+        <StudentCourse>K11</StudentCourse>
+        <StudentGPA>3.4</StudentGPA>
         <Classes>
             <ClassName>IS1104</ClassName>
             <ClassName>IS1105</ClassName>
@@ -47,6 +53,12 @@
     <Student>
         <StudentName>Nguyen Van B</StudentName>
         <StudentID>SE22222</StudentID>
+        <StudentMail>AnvSE11111@fpt.edu.vn</StudentMail>
+        <StudentPhone>0123 456 789</StudentPhone>
+        <StudentDOB>12/12/2018</StudentDOB>
+        <StudentSex>Male</StudentSex>
+        <StudentCourse>K11</StudentCourse>
+        <StudentGPA>3.4</StudentGPA>
         <Classes>
             <ClassName>IS1104</ClassName>
         </Classes>

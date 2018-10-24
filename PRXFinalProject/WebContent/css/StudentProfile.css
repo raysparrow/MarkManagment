@@ -1,0 +1,39 @@
+.content{
+    display: inline-block;
+    border: 10px solid #99979b;
+    margin-top: 10px;
+    width: 98%;
+    height: 400px;
+    border-radius: 20px;
+}
+.profile{
+    margin: 20px;
+    float:left;
+    width: 49%;
+}
+#profile_student_name{
+    font-weight: bold;
+    font-size: 70px;
+    margin-left: 5%;
+    text-shadow:6px 6px #bfbec0;
+}
+#profile_student_id{
+    font-size: 46px;
+    margin-left: 25%;
+}
+#profile_student_detail{
+    margin-top:50px;
+    margin-left: 5%;
+    width: 60%;
+}
+.vl_student_profile{
+    border-left: 10px dotted #99979b;
+    height: 330px;
+    margin-top:30px;
+}
+.img_profile{
+    width:30%;
+    height:320px;
+    margin-left:8%;
+    margin-top:30px;
+}

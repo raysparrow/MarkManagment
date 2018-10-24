@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mark Management</title>
+<link rel="stylesheet" type="text/css" href="css/Header.css">
+<link rel="stylesheet" type="text/css" href="css/StudentProfile.css">
+</head>
+<body>
+	<div class="wrap">
+		<div id="header">
+			<img id="img" alt="headerIMG" src="img/banner.jpg" />
+			<div id="wel-log" class="left">
+				<div id="wel" class="left margin_top_40px">Welcome, Duy</div>
+				<div class="vl left margin_top_40px margin_left_5"></div>
+				<div id="log" class="left margin_top_40px margin_left_5">
+					<a href="#">Logout</a>
+				</div>
+			</div>
+		</div>
+		<div class="navbar">
+			<a href="StudentHome.html">Home</a> <a href="StudentSubject.html">Subjects</a>
+			<a class="active" href="#student_profile">Student Profile</a>
+		</div>
+		<div class="content">
+			<div class="profile">
+				<div id="profile_student_name"></div>
+				<div id="profile_student_id"></div>
+				<table id="profile_student_detail">
+				</table>
+			</div>
+			<div class="vl_student_profile left"></div>
+			<img class="img_profile ava" src="img/ava1.jpg" alt="Avatar of Student" />
+		</div>
+		<script>
+			loadXMLDoc();
+			function loadXMLDoc() {
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						myFunction(this);
+					}
+				};
+				xmlhttp.open("GET", "data/Database.xml", true);
+				xmlhttp.send();
+			}
+			function myFunction(xml) {
+				var i;
+				var xmlDoc = xml.responseXML;
+				var table;
+				var studentName;
+				var studentId;
+				var x = xmlDoc.getElementsByTagName("Student");
+				for (i = 0; i < x.length; i++) {
+					if (x[i].getElementsByTagName("StudentID")[0].childNodes[0].nodeValue == "SE11111") {
+						studentName = x[i].getElementsByTagName("StudentName")[0].childNodes[0].nodeValue;
+						studentId = "-"
+								+ x[i].getElementsByTagName("StudentID")[0].childNodes[0].nodeValue
+								+ "-";
+						table = "<tr><td>Email:</td><td>"
+								+ x[i].getElementsByTagName("StudentMail")[0].childNodes[0].nodeValue
+								+ "</td></tr>"
+								+ "<tr><td>Phone:</td><td>"
+								+ x[i].getElementsByTagName("StudentPhone")[0].childNodes[0].nodeValue
+								+ "</td></tr>"
+								+ "<tr><td>Date of birth:</td><td>"
+								+ x[i].getElementsByTagName("StudentDOB")[0].childNodes[0].nodeValue
+								+ "</td></tr>"
+								+ "<tr><td>Sex:</td><td>"
+								+ x[i].getElementsByTagName("StudentSex")[0].childNodes[0].nodeValue
+								+ "</td></tr>"
+								+ "<tr><td>Course:</td><td>"
+								+ x[i].getElementsByTagName("StudentCourse")[0].childNodes[0].nodeValue
+								+ "</td></tr>"
+								+ "<tr><td>Current GPA:</td><td>"
+								+ x[i].getElementsByTagName("StudentGPA")[0].childNodes[0].nodeValue
+								+ "</td></tr>";
+					}
+				}
+				document.getElementById("profile_student_name").innerHTML = studentName;
+				document.getElementById("profile_student_id").innerHTML = studentId;
+				document.getElementById("profile_student_detail").innerHTML = table;
+			}
+		</script>
+
+	</div>
+
+</body>
+</html>
