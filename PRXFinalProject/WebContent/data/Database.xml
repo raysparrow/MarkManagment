@@ -10,6 +10,7 @@
         </Classes>
         <Subjects>
             <Subject>
+                <ClassName>IS1105</ClassName>
                 <TeacherID>sonnt5</TeacherID>
                 <SubjectID>DBW301</SubjectID>
                 <SubjectName>Data warehouse</SubjectName>
@@ -20,6 +21,7 @@
                 <TotalMark>5</TotalMark>    
             </Subject>
             <Subject>
+                <ClassName>IS1104</ClassName>
                 <TeacherID>AnhBN</TeacherID>
                 <SubjectID>PRX301</SubjectID>
                 <SubjectName>Web Development (XML)</SubjectName>
@@ -30,6 +32,7 @@
                 <TotalMark>5</TotalMark>    
             </Subject>
             <Subject>
+                <ClassName>IS1104</ClassName>
                 <TeacherID>anhpn</TeacherID>
                 <SubjectID>MLN101</SubjectID>
                 <SubjectName>Principles of Marxism - Leninism</SubjectName>
@@ -49,6 +52,7 @@
         </Classes>
         <Subjects>
             <Subject>
+                <ClassName>IS1104</ClassName>
                 <TeacherID>AnhBN</TeacherID>
                 <SubjectID>PRX301</SubjectID>
                 <SubjectName>Web Development (XML)</SubjectName>
@@ -59,6 +63,7 @@
                 <TotalMark>5</TotalMark>    
             </Subject>
             <Subject>
+                <ClassName>IS1104</ClassName>
                 <TeacherID>anhpn</TeacherID>
                 <SubjectID>MLN101</SubjectID>
                 <SubjectName>Principles of Marxism - Leninism</SubjectName>
