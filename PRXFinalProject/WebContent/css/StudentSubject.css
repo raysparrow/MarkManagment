@@ -5,10 +5,11 @@ body {font-family: "Lato", sans-serif;}
 
 .Content {
     display: inline-block;
-    border: 10px solid black;
+    border: 10px solid #99979b;
     margin-top:10px;
     width:100%;
-    height:auto;
+    height:400px;
+    border-radius: 20px
 }
 
 /* Style the tab */
