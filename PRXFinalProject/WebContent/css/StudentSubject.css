@@ -8,6 +8,7 @@ body {font-family: "Lato", sans-serif;}
     border: 10px solid black;
     margin-top:10px;
     width:100%;
+    height:auto;
 }
 
 /* Style the tab */
@@ -52,6 +53,7 @@ body {font-family: "Lato", sans-serif;}
     width: 85%;
     border-left: none;
     height: 300px;
+    display: none;
 }
 
 .mark {
