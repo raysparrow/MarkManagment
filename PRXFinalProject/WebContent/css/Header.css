@@ -79,4 +79,6 @@
 /*CSS for body*/
 body{
     background-color:#f2f2f2;
+    font-family: "Lato", sans-serif;
 }
+* {box-sizing: border-box}

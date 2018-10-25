@@ -1,0 +1,13 @@
+.table{
+    float: left;
+    width: 90%;
+    border: 1px solid;
+    height: auto;
+    padding: 20px;
+    margin: 30px;
+    margin-left: 50px;
+}
+h2{
+    padding-left: 50px;
+    padding-top: 40px;
+}

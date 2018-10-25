@@ -5,86 +5,92 @@
 <title>Mark Management</title>
 <link rel="stylesheet" type="text/css" href="css/Header.css">
 <link rel="stylesheet" type="text/css" href="css/Class.css">
-<script src="https://code.jquery.com/jquery-3.3.1.js"
-	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-	crossorigin="anonymous">
-</script>
-<script>
-	$(function() {
-		$("#header").load("header/Header.html");
-	});
-</script>
 </head>
 <body>
-<div id="header"></div>
-	<div class="navbar">
-		<a class="active" href="#home">Home</a> <a href="#news">Subject</a> <a
-			href="#contact">Student Profile</a>
-	</div>
-	<h2>Student ID</h2>
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Class Name</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Class Name</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Class Name</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Class Name</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Class Name</button>
-</div>
+	<div class="wrap">
+		<div id="header">
+			<img id="img" alt="headerIMG" src="img/banner.jpg" />
+			<div id="wel-log" class="left">
+				<div id="wel" class="left margin_top_40px">Welcome, Duy</div>
+				<div class="vl left margin_top_40px margin_left_5"></div>
+				<div id="log" class="left margin_top_40px margin_left_5">
+					<a href="#">Logout</a>
+				</div>
+			</div>
+		</div>
+		<div class="navbar">
+			<a href="TeacherHome.html">Home</a> <a class="active"
+				href="class.html">Class</a> <a href="TeacherProfile.html">Profile</a>
+		</div>
+		<h2>Student ID</h2>
+		<div class="tab">
+			<button class="tablinks" onclick="openCity(event, 'London')"
+				id="defaultOpen">Class Name</button>
+			<button class="tablinks" onclick="openCity(event, 'Paris')">Class
+				Name</button>
+			<button class="tablinks" onclick="openCity(event, 'Tokyo')">Class
+				Name</button>
+			<button class="tablinks" onclick="openCity(event, 'Tokyo')">Class
+				Name</button>
+			<button class="tablinks" onclick="openCity(event, 'Tokyo')">Class
+				Name</button>
+		</div>
 
-<div id="London" class="tabcontent">
-   <table id="homeTBL" class="bang"></table>
-</div>
+		<div id="London" class="tabcontent">
+			<table id="homeTBL" class="bang"></table>
+		</div>
 
-<div id="Paris" class="tabcontent">
-  <table id="homeTBL" class="bang"></table>
-</div>
+		<div id="Paris" class="tabcontent">
+			<table id="homeTBL" class="bang"></table>
+		</div>
 
-<div id="Tokyo" class="tabcontent">
-   <table id="homeTBL" class="bang"></table>
-</div>
+		<div id="Tokyo" class="tabcontent">
+			<table id="homeTBL" class="bang"></table>
+		</div>
 
-<script>
-function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-
-document.getElementById("defaultOpen").click();
-</script>
-
-
-
-<table id="homeTBL" class="margin_top_40px"></table>
-	<script>
-		loadXMLDoc();
-		function loadXMLDoc() {
-			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					myFunction(this);
+		<script>
+			function openCity(evt, cityName) {
+				var i, tabcontent, tablinks;
+				tabcontent = document.getElementsByClassName("tabcontent");
+				for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = "none";
 				}
-			};
-			xmlhttp.open("GET", "data/Database.xml", true);
-			xmlhttp.send();
-		}
-		function myFunction(xml) {
-			var i;
-			var xmlDoc = xml.responseXML;
-			var table = "<tr><th>Subject ID</th><th>Subject Name</th></tr>";
-			var x = xmlDoc.getElementsByTagName("Student");
-			for (i = 0; i < x.length; i++) {
-				var z = x[i].getElementsByTagName("Classes");
-			//	if (z[i].getElementsByTagName("ClassName")[0].childNodes[0].nodeValue == "IS1104") {
-				//	var y = x[i].getElementsByTagName("Subject");
+				tablinks = document.getElementsByClassName("tablinks");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(
+							" active", "");
+				}
+				document.getElementById(cityName).style.display = "block";
+				evt.currentTarget.className += " active";
+			}
+
+			document.getElementById("defaultOpen").click();
+		</script>
+
+
+
+		<table id="homeTBL" class="margin_top_40px"></table>
+		<script>
+			loadXMLDoc();
+			function loadXMLDoc() {
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						myFunction(this);
+					}
+				};
+				xmlhttp.open("GET", "data/Database.xml", true);
+				xmlhttp.send();
+			}
+			function myFunction(xml) {
+				var i;
+				var xmlDoc = xml.responseXML;
+				var table = "<tr><th>Subject ID</th><th>Subject Name</th></tr>";
+				var x = xmlDoc.getElementsByTagName("Student");
+				for (i = 0; i < x.length; i++) {
+					var z = x[i].getElementsByTagName("Classes");
+					//	if (z[i].getElementsByTagName("ClassName")[0].childNodes[0].nodeValue == "IS1104") {
+					//	var y = x[i].getElementsByTagName("Subject");
 					for (j = 0; j < x.length; j++) {
 						table += "<tr><td>"
 								+ x[j].getElementsByTagName("StudentID")[0].childNodes[0].nodeValue
@@ -92,11 +98,12 @@ document.getElementById("defaultOpen").click();
 								+ x[j].getElementsByTagName("StudentName")[0].childNodes[0].nodeValue
 								+ "</td>";
 					}
-				//}
+					//}
 
+				}
+				document.getElementById("homeTBL").innerHTML = table;
 			}
-			document.getElementById("homeTBL").innerHTML = table;
-		}
-	</script>
+		</script>
+	</div>
 </body>
-</html> 
+</html>
