@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="Infomation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Students"/>
+        <xs:element ref="Classes"/>
+        <xs:element ref="Subjects"/>
+        <xs:element ref="Teachers"/>
+        <xs:element ref="StudentSubjects"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Students">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Student"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Student">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="StudentName"/>
+        <xs:element ref="StudentID"/>
+        <xs:element ref="Password"/>
+        <xs:element ref="StudentMail"/>
+        <xs:element ref="StudentPhone"/>
+        <xs:element ref="StudentDOB"/>
+        <xs:element ref="StudentSex"/>
+        <xs:element ref="StudentCourse"/>
+        <xs:element ref="StudentGPA"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StudentName" type="xs:string"/>
+  <xs:element name="StudentMail" type="xs:string"/>
+  <xs:element name="StudentPhone" type="xs:string"/>
+  <xs:element name="StudentDOB" type="xs:string"/>
+  <xs:element name="StudentSex" type="xs:string"/>
+  <xs:element name="StudentCourse" type="xs:string"/>
+  <xs:element name="StudentGPA" type="xs:double"/>
+  <xs:element name="Classes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Class"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Class">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ClassID"/>
+        <xs:element ref="ClassName"/>
+        <xs:element ref="CreateDate"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClassName" type="xs:string"/>
+  <xs:element name="CreateDate" type="xs:string"/>
+  <xs:element name="Subjects">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Subject"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Subject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="SubjectID"/>
+        <xs:element ref="ShortName"/>
+        <xs:element ref="SubjectName"/>
+        <xs:element ref="semester"/>
+        <xs:element ref="NumberOfCredit"/>
+        <xs:element ref="ClassID"/>
+        <xs:element ref="TeacherID"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShortName" type="xs:string"/>
+  <xs:element name="SubjectName" type="xs:string"/>
+  <xs:element name="semester" type="xs:string"/>
+  <xs:element name="NumberOfCredit" type="xs:integer"/>
+  <xs:element name="Teachers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Teacher"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Teacher">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TeacherID"/>
+        <xs:element ref="TeacherName"/>
+        <xs:element ref="Password"/>
+        <xs:element ref="Phone"/>
+        <xs:element ref="Mail"/>
+        <xs:element ref="DOB"/>
+        <xs:element ref="Sex"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TeacherName" type="xs:string"/>
+  <xs:element name="Phone" type="xs:string"/>
+  <xs:element name="Mail" type="xs:string"/>
+  <xs:element name="DOB" type="xs:string"/>
+  <xs:element name="Sex" type="xs:string"/>
+  <xs:element name="StudentSubjects">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="StudentSubject"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StudentSubject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="StudentID"/>
+        <xs:element ref="SubjectID"/>
+        <xs:element ref="PT1"/>
+        <xs:element ref="PT2"/>
+        <xs:element ref="ASS1"/>
+        <xs:element ref="Ass2"/>
+        <xs:element ref="FinalExam"/>
+        <xs:element ref="TotalMark"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PT1" type="xs:double"/>
+  <xs:element name="PT2" type="xs:double"/>
+  <xs:element name="ASS1" type="xs:double"/>
+  <xs:element name="Ass2" type="xs:double"/>
+  <xs:element name="FinalExam" type="xs:double"/>
+  <xs:element name="TotalMark" type="xs:double"/>
+  <xs:element name="StudentID" type="xs:string"/>
+  <xs:element name="Password" type="xs:string"/>
+  <xs:element name="ClassID" type="xs:integer"/>
+  <xs:element name="SubjectID" type="xs:integer"/>
+  <xs:element name="TeacherID" type="xs:string"/>
+</xs:schema>

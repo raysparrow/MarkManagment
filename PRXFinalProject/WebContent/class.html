@@ -11,7 +11,7 @@
 		<div id="header">
 			<img id="img" alt="headerIMG" src="img/banner.jpg" />
 			<div id="wel-log" class="left">
-				<div id="wel" class="left margin_top_40px">Welcome, Duy</div>
+				<div id="wel" class="left margin_top_40px">Welcome, Son</div>
 				<div class="vl left margin_top_40px margin_left_5"></div>
 				<div id="log" class="left margin_top_40px margin_left_5">
 					<a href="#">Logout</a>
@@ -22,18 +22,10 @@
 			<a href="TeacherHome.html">Home</a> <a class="active"
 				href="class.html">Class</a> <a href="TeacherProfile.html">Profile</a>
 		</div>
-		<h2>Student ID</h2>
 		<div class="tab">
 			<button class="tablinks" onclick="openCity(event, 'London')"
-				id="defaultOpen">Class Name</button>
-			<button class="tablinks" onclick="openCity(event, 'Paris')">Class
-				Name</button>
-			<button class="tablinks" onclick="openCity(event, 'Tokyo')">Class
-				Name</button>
-			<button class="tablinks" onclick="openCity(event, 'Tokyo')">Class
-				Name</button>
-			<button class="tablinks" onclick="openCity(event, 'Tokyo')">Class
-				Name</button>
+				id="defaultOpen">IS1105</button>
+			<button class="tablinks" onclick="openCity(event, 'Paris')">IS1104</button>
 		</div>
 
 		<div id="London" class="tabcontent">
@@ -44,9 +36,6 @@
 			<table id="homeTBL" class="bang"></table>
 		</div>
 
-		<div id="Tokyo" class="tabcontent">
-			<table id="homeTBL" class="bang"></table>
-		</div>
 
 		<script>
 			function openCity(evt, cityName) {
@@ -66,10 +55,6 @@
 
 			document.getElementById("defaultOpen").click();
 		</script>
-
-
-
-		<table id="homeTBL" class="margin_top_40px"></table>
 		<script>
 			loadXMLDoc();
 			function loadXMLDoc() {
@@ -92,7 +77,7 @@
 					//	if (z[i].getElementsByTagName("ClassName")[0].childNodes[0].nodeValue == "IS1104") {
 					//	var y = x[i].getElementsByTagName("Subject");
 					for (j = 0; j < x.length; j++) {
-						table += "<tr><td>"
+						table += "<tr><td><a href=\"TeacherStudent.html\"</a>"
 								+ x[j].getElementsByTagName("StudentID")[0].childNodes[0].nodeValue
 								+ "</td><td>"
 								+ x[j].getElementsByTagName("StudentName")[0].childNodes[0].nodeValue

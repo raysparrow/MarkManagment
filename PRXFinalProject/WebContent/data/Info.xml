@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Infomation>
+    <Students>
+        <Student>
+            <StudentName>Nguyen Van A</StudentName>
+            <StudentID>SE11111</StudentID>
+            <Password>123456</Password>
+            <StudentMail>AnvSE11111@fpt.edu.vn</StudentMail>
+            <StudentPhone>0123 456 789</StudentPhone>
+            <StudentDOB>12/12/1997</StudentDOB>
+            <StudentSex>Male</StudentSex>
+            <StudentCourse>K11</StudentCourse>
+            <StudentGPA>3.4</StudentGPA>
+
+        </Student>
+        <Student>
+            <StudentName>Nguyen Van B</StudentName>
+            <StudentID>SE22222</StudentID>
+            <Password>123456</Password>
+            <StudentMail>AnvSE11111@fpt.edu.vn</StudentMail>
+            <StudentPhone>0123 456 789</StudentPhone>
+            <StudentDOB>12/12/1997</StudentDOB>
+            <StudentSex>Male</StudentSex>
+            <StudentCourse>K11</StudentCourse>
+            <StudentGPA>3.4</StudentGPA>
+
+        </Student>
+    </Students>
+    <Classes>
+        <Class>
+            <ClassID>1</ClassID>
+            <ClassName>IS1104</ClassName>
+            <CreateDate>10/12/2018</CreateDate>
+        </Class>
+        <Class>
+            <ClassID>2</ClassID>
+            <ClassName>IS1105</ClassName>
+            <CreateDate>10/12/2018</CreateDate>
+        </Class>
+        <Class>
+            <ClassID>3</ClassID>
+            <ClassName>IS1106</ClassName>
+            <CreateDate>10/12/2018</CreateDate>
+        </Class>
+    </Classes>
+    <Subjects>
+        <Subject>
+            <SubjectID>1</SubjectID>
+            <ShortName>PRX301</ShortName>
+            <SubjectName>Web Development (XML)</SubjectName>
+            <semester>Fall 2018</semester>
+            <NumberOfCredit>3</NumberOfCredit>
+            <ClassID>1</ClassID>
+            <TeacherID>sonnt5</TeacherID>
+        </Subject>
+        <Subject>
+            <SubjectID>2</SubjectID>
+            <ShortName>MLN101</ShortName>
+            <SubjectName>Principles of Marxism - Leninism</SubjectName>
+            <semester>Fall 2018</semester>
+            <NumberOfCredit>3</NumberOfCredit>
+            <ClassID>2</ClassID>
+            <TeacherID>AnhBN</TeacherID>
+        </Subject>
+
+    </Subjects>
+    <Teachers>
+        <Teacher>
+            <TeacherID>sonnt5</TeacherID>
+            <TeacherName>Ngô Tùng Sơn</TeacherName>
+            <Password>123456</Password>
+            <Phone>0999999999</Phone>
+            <Mail>sonnt69@fe.edu.vn</Mail>
+            <DOB>12/12/1981</DOB>
+            <Sex>Male</Sex>
+        </Teacher>
+        <Teacher>
+            <TeacherID>AnhBN</TeacherID>
+            <TeacherName>Bùi Ngọc Anh</TeacherName>
+            <Password>123456</Password>
+            <Phone>0999999999</Phone>
+            <Mail>AnhBN5@fe.edu.vn</Mail>
+            <DOB>12/12/1985</DOB>
+            <Sex>Male</Sex>
+        </Teacher>
+        <Teacher>
+            <TeacherID>anhpn</TeacherID>
+            <TeacherName>Phạm Ngọc Anh</TeacherName>
+            <Password>123456</Password>
+            <Phone>0999999999</Phone>
+            <Mail>AnhPN16@fe.edu.vn</Mail>
+            <DOB>12/12/1980</DOB>
+            <Sex>Male</Sex>
+        </Teacher>
+    </Teachers>
+    <StudentSubjects>
+        <StudentSubject>
+            <StudentID>SE11111</StudentID>
+            <SubjectID>1</SubjectID>
+            <PT1>5</PT1>
+            <PT2>5</PT2>
+            <ASS1>5</ASS1>
+            <Ass2>5</Ass2>
+            <FinalExam>5</FinalExam>
+            <TotalMark>5</TotalMark>
+        </StudentSubject>
+        <StudentSubject>
+            <StudentID>SE11111</StudentID>
+            <SubjectID>2</SubjectID>
+            <PT1>5</PT1>
+            <PT2>5</PT2>
+            <ASS1>5</ASS1>
+            <Ass2>5</Ass2>
+            <FinalExam>5</FinalExam>
+            <TotalMark>5</TotalMark>
+        </StudentSubject>
+        <StudentSubject>
+            <StudentID>SE22222</StudentID>
+            <SubjectID>1</SubjectID>
+            <PT1>5</PT1>
+            <PT2>5</PT2>
+            <ASS1>5</ASS1>
+            <Ass2>5</Ass2>
+            <FinalExam>5</FinalExam>
+            <TotalMark>5</TotalMark>
+        </StudentSubject>
+    </StudentSubjects>
+</Infomation>
