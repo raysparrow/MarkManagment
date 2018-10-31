@@ -136,7 +136,7 @@
   <xs:element name="TotalMark" type="xs:double"/>
   <xs:element name="StudentID" type="xs:string"/>
   <xs:element name="Password" type="xs:string"/>
-  <xs:element name="ClassID" type="xs:integer"/>
-  <xs:element name="SubjectID" type="xs:integer"/>
+  <xs:element name="ClassID" type="xs:int"/>
+  <xs:element name="SubjectID" type="xs:int"/>
   <xs:element name="TeacherID" type="xs:string"/>
 </xs:schema>

@@ -8,7 +8,6 @@
 
 package objects;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -55,7 +54,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Subject {
 
     @XmlElement(name = "SubjectID", required = true)
-    protected BigInteger subjectID;
+    protected int subjectID;
     @XmlElement(name = "ShortName", required = true)
     protected String shortName;
     @XmlElement(name = "SubjectName", required = true)
@@ -63,9 +62,9 @@ public class Subject {
     @XmlElement(required = true)
     protected String semester;
     @XmlElement(name = "NumberOfCredit", required = true)
-    protected BigInteger numberOfCredit;
+    protected int numberOfCredit;
     @XmlElement(name = "ClassID", required = true)
-    protected BigInteger classID;
+    protected int classID;
     @XmlElement(name = "TeacherID", required = true)
     protected String teacherID;
 
@@ -74,10 +73,10 @@ public class Subject {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link int }
      *     
      */
-    public BigInteger getSubjectID() {
+    public int getSubjectID() {
         return subjectID;
     }
 
@@ -86,10 +85,10 @@ public class Subject {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link int }
      *     
      */
-    public void setSubjectID(BigInteger value) {
+    public void setSubjectID(int value) {
         this.subjectID = value;
     }
 
@@ -170,10 +169,10 @@ public class Subject {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link int }
      *     
      */
-    public BigInteger getNumberOfCredit() {
+    public int getNumberOfCredit() {
         return numberOfCredit;
     }
 
@@ -182,10 +181,10 @@ public class Subject {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link int }
      *     
      */
-    public void setNumberOfCredit(BigInteger value) {
+    public void setNumberOfCredit(int value) {
         this.numberOfCredit = value;
     }
 
@@ -194,10 +193,10 @@ public class Subject {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link int }
      *     
      */
-    public BigInteger getClassID() {
+    public int getClassID() {
         return classID;
     }
 
@@ -206,10 +205,10 @@ public class Subject {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link int }
      *     
      */
-    public void setClassID(BigInteger value) {
+    public void setClassID(int value) {
         this.classID = value;
     }
 
