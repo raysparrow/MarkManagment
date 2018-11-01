@@ -223,11 +223,22 @@ public class FunctionJAXB {
 						check = false;
 					}
 				}
-				if(check == true){
+				if (check == true) {
 					result.add(listSubject.get(i).getShortName());
 				}
 			}
 		}
 		return result;
+	}
+
+	// Get Student by Student Email
+	public Student getStudentByEmail(String studentMail) {
+		List<Student> listStudent = getAllStudents();
+		for (int i = 0; i < listStudent.size(); i++) {
+			if (listStudent.get(i).getStudentMail().equals(studentMail)) {
+				return listStudent.get(i);
+			}
+		}
+		return null;
 	}
 }
