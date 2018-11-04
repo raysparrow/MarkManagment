@@ -30,7 +30,7 @@
 				if (listS.getPassword().equals(password)) {
 					session.setAttribute("email", email);
 					//response.sendRedirect("StudentHome.jsp");
-					response.sendRedirect("StudentSubject.jsp");
+					response.sendRedirect("StudentHome.jsp");
 					break;
 				} else {
 					check = false;

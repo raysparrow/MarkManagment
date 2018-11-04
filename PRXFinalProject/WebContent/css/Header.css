@@ -33,6 +33,9 @@
 .left{
     float: left;
 }
+.right{
+    float: right;
+}
 .margin_top_40px{
     margin-top: 40px;
 }

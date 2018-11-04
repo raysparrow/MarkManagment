@@ -1,13 +1,82 @@
-.table{
-    float: left;
-    width: 90%;
-    border: 1px solid;
-    height: auto;
-    padding: 20px;
-    margin: 30px;
-    margin-left: 50px;
+#homeTBL {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
 }
-h2{
-    padding-left: 50px;
-    padding-top: 40px;
+
+#homeTBL tbody {
+    display:block;
+    height:277px;
+    overflow:auto;
+}
+
+#homeTBL thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+
+#homeTBL td, #homeTBL th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#homeTBL tr:nth-child(even){background-color: #f2f2f2;}
+
+#homeTBL tr:hover {background-color: #ddd;}
+
+#homeTBL th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: green;
+    color: white;
+}
+
+.content{
+    display: inline-block;
+    border: 10px solid #99979b;
+    margin-top: 10px;
+    width: 98%;
+    height: 450px;
+    border-radius: 20px;
+}
+
+.example {
+    padding-top: 30px;
+    margin:auto;
+    max-width:300px;
+    padding-bottom:30px;
+}
+
+.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+.example button {
+    height: 42px;
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: green;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+.example button:hover {
+    background: #0b7dda;
+}
+
+.example::after {
+    content: "";
+    clear: both;
+    display: table;
 }

@@ -13,15 +13,20 @@
 </head>
 <body>
 	<%
+	//get user is signing in
+			String email = (String) session.getAttribute("email");
+			//check Signing in
+			if(email == null || email.equals("")){
+				response.sendRedirect("Logout.jsp");
+			}else {
 		FunctionJAXB functionJAXB = new FunctionJAXB();
-		String studentID = "SE11111";
 
 		//Get Student Info
-		Student student = functionJAXB.getStudentByID(studentID);
+		Student student = functionJAXB.getStudentByEmail(email);
 
 		//Get Student mark info
 		List<StudentSubject> studentSubjects = functionJAXB
-				.getStudentSubjectsByStudentId(studentID);
+				.getStudentSubjectsByStudentId(student.getStudentID());
 	%>
 	<div class="wrap">
 		<div id="header">
@@ -61,6 +66,7 @@
 				</tr>
 				<%
 					}
+			}
 				%>
 			</table>
 		</div>
