@@ -6,6 +6,10 @@ table{
     margin:auto;
 }
 
+.semester{
+    margin-top:10px;
+}
+
 .Content {
     display: inline-block;
     border: 10px solid #99979b;

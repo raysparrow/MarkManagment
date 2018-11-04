@@ -1,3 +1,6 @@
+<%@page import="java.util.Set"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
@@ -31,6 +34,13 @@
 			List<StudentSubject> listStudentS = functionJAXB.getStudentSubjectsByStudentId(student.getStudentID());
 			Subject subject;
 			Teacher teacher;
+			Map listSem = new HashMap();
+			for(StudentSubject list : listStudentS){
+				subject = functionJAXB.getSubjectById(list.getSubjectID());
+				String seme = subject.getSemester();
+				listSem.put(seme, seme);
+			}
+			
 	%>
 	<div class="wrap">
 		<div id="header">
@@ -45,12 +55,26 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="navbar">
 			<a href="StudentHome.jsp">Home</a> <a class="active"
 				href="#StudentSubject">Subject</a> <a href="StudentProfile.jsp">Student
 				Profile</a>
 		</div>
-
+		<center>
+		<select class="semester" id="semester" onchange="selectSemester()">
+		<%
+		
+			Set set = listSem.keySet();
+			for (Object key : set) {
+            	
+		%>
+  			<option value="<%= key%>"><%= key%></option>
+  		<%
+			}
+  		%>
+		</select>
+		</center>
 		<div class="Content">
 			<div class="tab">
 				<%
@@ -58,7 +82,7 @@
 						subject = functionJAXB.getSubjectById(list.getSubjectID());
 						String subName = subject.getSubjectName();
 				%>
-				<button class="tablinks" onclick="openCity(event, '<%=subName%>')"
+				<button class="tablinks" onclick="selectSubject(event, '<%=subName%>')"
 					id="defaultOpen"><%=subName%></button>
 
 				<%
@@ -76,7 +100,7 @@
 				<div class="mark">
 					<div class="marktop">
 						<div class="subname">
-							<h1><%=subject.getSubjectID()%></h1>
+							<h1><%=subject.getShortName() %></h1>
 						</div>
 						<div class="teacherInf">
 							<p>
@@ -136,8 +160,8 @@
 					}
 			%>
 
-			<script>
-				function openCity(evt, cityName) {
+			<script type="text/javascript">
+				function selectSubject(evt, subName) {
 					var i, tabcontent, tablinks;
 					tabcontent = document.getElementsByClassName("tabcontent");
 					for (i = 0; i < tabcontent.length; i++) {
@@ -148,12 +172,18 @@
 						tablinks[i].className = tablinks[i].className.replace(
 								" active", "");
 					}
-					document.getElementById(cityName).style.display = "block";
+					document.getElementById(subName).style.display = "block";
 					evt.currentTarget.className += " active";
 				}
 
 				// Get the element with id="defaultOpen" and click on it
 				document.getElementById("defaultOpen").click();
+				
+				function selectSemester() {
+				    var x = document.getElementById("semester").value;
+				    alert(x);
+					
+				}
 			</script>
 		</div>
 	</div>

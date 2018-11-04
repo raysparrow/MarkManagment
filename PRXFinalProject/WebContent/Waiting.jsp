@@ -24,7 +24,7 @@
 
 		boolean check = true;
 		boolean check1 = true;
-
+		session.setAttribute("email", null);
 		for (Student listS : students) {
 			if (listS.getStudentMail().equals(email)) {
 				if (listS.getPassword().equals(password)) {
@@ -45,7 +45,7 @@
 				if (listT.getMail().equals(email)) {
 					if (listT.getPassword().equals(password)) {
 						session.setAttribute("email", email);
-						response.sendRedirect("TeacherHome.html");
+						response.sendRedirect("TeacherHome.jsp");
 						break;
 					} else {
 						check1 = false;
@@ -56,7 +56,10 @@
 			}
 
 			if (check1 == false) {
-				response.sendRedirect("Login.html");
+				//response.sendRedirect("Login.html");
+				String targetURL = "Login.html";
+				response.setStatus(HttpServletResponse.SC_TEMPORARY_REDIRECT);
+				response.setHeader("Location", targetURL);
 			}
 		}
 	%>
