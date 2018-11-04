@@ -16,8 +16,12 @@
     table-layout:fixed;
 }
 
-#homeTBL td, #homeTBL th {
+#homeTBL td {
     border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#homeTBL th {
     padding: 8px;
 }
 
@@ -31,6 +35,11 @@
     text-align: left;
     background-color: green;
     color: white;
+}
+
+#homeTBL th:hover {
+    background: #0fad0f;
+    cursor: pointer;
 }
 
 .content{
@@ -72,7 +81,7 @@
 }
 
 .example button:hover {
-    background: #0b7dda;
+    background: #0fad0f;
 }
 
 .example::after {

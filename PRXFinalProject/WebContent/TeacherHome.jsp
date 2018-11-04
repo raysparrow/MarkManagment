@@ -4,10 +4,13 @@
 <%@ page import="objects.*"%>
 <%@ page import="objects.Class"%>
 <%@ page import="function.FunctionJAXB"%>
+<%@ page import="javax.servlet.http.*"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://www.w3schools.com/lib/w3.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Mark Management</title>
@@ -16,12 +19,18 @@
 </head>
 <body>
 	<%
-		FunctionJAXB functionJAXB = new FunctionJAXB();
-		String teacherID = "sonnt5";
-		//Get teacher's information
-		Teacher teacher = functionJAXB.getTeacherById(teacherID);
-		//Get teacher's subject
-		List<Subject> listSubject = functionJAXB.getSubjectByTeacherId(teacherID);
+		//get user is signing in
+		String email = (String) session.getAttribute("email");
+		//check Signing in
+		if(email == null || email.equals("")){
+			response.sendRedirect("Logout.jsp");
+		} else {
+			
+			FunctionJAXB functionJAXB = new FunctionJAXB();
+			//Get teacher's information
+			Teacher teacher = functionJAXB.getTeacherByEmail(email);
+			//Get teacher's subject
+			List<Subject> listSubject = functionJAXB.getSubjectByTeacherId(teacher.getTeacherID());
 	%>
 	<div class="wrap">
 		<div id="header">
@@ -32,7 +41,7 @@
 					<%=teacher.getTeacherName()%></div>
 				<div class="vl left margin_top_40px margin_left_5"></div>
 				<div id="log" class="left margin_top_40px margin_left_5">
-					<a href="#">Logout</a>
+					<a href="Logout.jsp">Logout</a>
 				</div>
 			</div>
 		</div>
@@ -51,10 +60,10 @@
 			<table id="homeTBL">
 				<thead>
 				<tr>
-					<th>Subject ID</th>
-					<th>Subject Name</th>
-					<th>Class Name</th>
-					<th>Semester</th>
+					<th onclick="w3.sortHTML('#homeTBL', '.subject', 'td:nth-child(1)')">Subject ID</th>
+					<th onclick="w3.sortHTML('#homeTBL', '.subject', 'td:nth-child(2)')">Subject Name</th>
+					<th onclick="w3.sortHTML('#homeTBL', '.subject', 'td:nth-child(3)')">Class Name</th>
+					<th onclick="w3.sortHTML('#homeTBL', '.subject', 'td:nth-child(4)')">Semester</th>
 				</tr>
 				</thead>
 				<tbody id="tbodyS">
@@ -62,7 +71,7 @@
 				for (int i = 0; i < listSubject.size(); i++) {
 					Subject subject = listSubject.get(i);
 				%>
-				<tr>
+				<tr class="subject">
 					<td><a href="https://www.w3schools.com/html/"><%=subject.getShortName()%></a></td>
 					<td><%=subject.getSubjectName()%></td>
 					<%
@@ -73,6 +82,7 @@
 				</tr>
 				<%
 					}
+				}
 				%>
 				</tbody>	
 			</table>
@@ -92,7 +102,7 @@
 		           function search_table(value){  
 		                $('#tbodyS tr').each(function(){  
 		                     var found = 'false';  
-		                     $(this).each(function(){  
+		                     $(this).find('td:nth-child(1)').each(function(){  
 		                          if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)  
 		                          {  
 		                               found = 'true';  

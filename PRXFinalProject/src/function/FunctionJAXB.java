@@ -241,4 +241,16 @@ public class FunctionJAXB {
 		}
 		return null;
 	}
+
+	// Get teacher by teacher Email
+	// Khanh chi them duy nhat Function nay
+	public Teacher getTeacherByEmail(String teacherMail) {
+		List<Teacher> listTeacher = getAllTeachers();
+		for (int i = 0; i < listTeacher.size(); i++) {
+			if (listTeacher.get(i).getMail().equals(teacherMail)) {
+				return listTeacher.get(i);
+			}
+		}
+		return null;
+	}
 }
