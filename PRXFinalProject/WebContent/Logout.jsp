@@ -10,7 +10,8 @@
 	<h1>LogOut.......</h1>
 	<%
 		session.setAttribute("email", null);
-		response.sendRedirect("Login.html");
+		//response.sendRedirect("Login.html");
+		response.sendRedirect("Login.jsp");
 	%>
 </body>
 </html>

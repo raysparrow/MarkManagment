@@ -56,8 +56,9 @@
 			}
 
 			if (check1 == false) {
+				String error ="* Invalid login, lease try again";
 				//response.sendRedirect("Login.html");
-				String targetURL = "Login.html";
+				String targetURL = "Login.jsp?error="+error+"";
 				response.setStatus(HttpServletResponse.SC_TEMPORARY_REDIRECT);
 				response.setHeader("Location", targetURL);
 			}

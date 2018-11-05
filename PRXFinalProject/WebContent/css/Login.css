@@ -1,4 +1,15 @@
+.tit {
+    text-align: center;
+    letter-spacing: 3px;
+    text-shadow: 3px 2px gray;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+    font-variant: small-caps;
+}
 
+#error{
+   color: red;
+}
 .login-page{
     width: 360px;
     padding: 8% 0 0;
