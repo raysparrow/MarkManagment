@@ -21,26 +21,29 @@
 <body>
 	<%
 		//get user is signing in
-		String email = (String) session.getAttribute("email");
-		//check Signing in
-		if(email == null || email.equals("")){
-			response.sendRedirect("Logout.jsp");
-		}else {
+			String email = (String) session.getAttribute("email");
+			String semesterId = (String) request.getParameter("semesterId");
+			//check Signing in
+			if(email == null || email.equals("")){
+				response.sendRedirect("Logout.jsp");
+			}else {
+			
+		FunctionJAXB functionJAXB = new FunctionJAXB();
 		
-			FunctionJAXB functionJAXB = new FunctionJAXB();
-			
-				//get Student Infomation
-			Student student = functionJAXB.getStudentByEmail(email);
-			List<StudentSubject> listStudentS = functionJAXB.getStudentSubjectsByStudentId(student.getStudentID());
-			Subject subject;
-			Teacher teacher;
-			Map listSem = new HashMap();
-			for(StudentSubject list : listStudentS){
-				subject = functionJAXB.getSubjectById(list.getSubjectID());
-				String seme = subject.getSemester();
-				listSem.put(seme, seme);
+			//get Student Infomation
+		Student student = functionJAXB.getStudentByEmail(email);
+		List<StudentSubject> listStudentS = functionJAXB.getStudentSubjectsByStudentId(student.getStudentID());
+		Subject subject;
+		Teacher teacher;
+		Map listSem = new HashMap();
+		for(StudentSubject list : listStudentS){
+			subject = functionJAXB.getSubjectById(list.getSubjectID());
+			String seme = subject.getSemester();
+			listSem.put(seme, seme);
+			if(semesterId == null || semesterId.equals("")){
+				semesterId = seme;
 			}
-			
+		}
 	%>
 	<div class="wrap">
 		<div id="header">
@@ -55,52 +58,60 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="navbar">
 			<a href="StudentHome.jsp">Home</a> <a class="active"
 				href="#StudentSubject">Subject</a> <a href="StudentProfile.jsp">Student
 				Profile</a>
 		</div>
-		<center>
-		<select class="semester" id="semester" onchange="selectSemester()">
-		<%
 		
-			Set set = listSem.keySet();
-			for (Object key : set) {
-            	
-		%>
-  			<option value="<%= key%>"><%= key%></option>
-  		<%
-			}
-  		%>
-		</select>
-		</center>
+		<div class="semester">
+			<div class="dSemester"><h1>Semester : <%=semesterId %></h1></div>
+			<div class="dropdown">
+				<button onclick="myFunction()" class="dropbtn">Semester</button>
+				<div id="myDropdown" class="dropdown-content">
+					<%
+						Set set = listSem.keySet();
+						for (Object key : set) {
+					%>
+						<a href="StudentSubject.jsp?semesterId=<%=key%>"><%=key%></a>
+					<%
+						}
+					%>
+				</div>
+			</div>
+		</div>
+	
 		<div class="Content">
 			<div class="tab">
 				<%
 					for(StudentSubject list : listStudentS){
 						subject = functionJAXB.getSubjectById(list.getSubjectID());
+						
+						if(semesterId.contains(subject.getSemester())){
+						
 						String subName = subject.getSubjectName();
 				%>
-				<button class="tablinks" onclick="selectSubject(event, '<%=subName%>')"
-					id="defaultOpen"><%=subName%></button>
+				<button class="tablinks"
+					onclick="selectSubject(event, '<%=subName%>')" id="defaultOpen"><%=subName%></button>
 
 				<%
+						}
 					}
 				%>
 
 			</div>
 			<%
 				for(StudentSubject list : listStudentS){
-					subject = functionJAXB.getSubjectById(list.getSubjectID());
-					teacher = functionJAXB.getTeacherById(subject.getTeacherID());
-					String subName = subject.getSubjectName();
+						subject = functionJAXB.getSubjectById(list.getSubjectID());
+						teacher = functionJAXB.getTeacherById(subject.getTeacherID());
+						String subName = subject.getSubjectName();
 			%>
 			<div id="<%=subName%>" class="tabcontent">
 				<div class="mark">
 					<div class="marktop">
 						<div class="subname">
-							<h1><%=subject.getShortName() %></h1>
+							<h1><%=subject.getShortName()%></h1>
 						</div>
 						<div class="teacherInf">
 							<p>
@@ -157,7 +168,7 @@
 			</div>
 			<%
 				}
-					}
+						}
 			%>
 
 			<script type="text/javascript">
@@ -178,11 +189,26 @@
 
 				// Get the element with id="defaultOpen" and click on it
 				document.getElementById("defaultOpen").click();
-				
-				function selectSemester() {
-				    var x = document.getElementById("semester").value;
-				    alert(x);
-					
+
+				function myFunction() {
+					document.getElementById("myDropdown").classList
+							.toggle("show");
+				}
+
+				// Close the dropdown if the user clicks outside of it
+				window.onclick = function(event) {
+					if (!event.target.matches('.dropbtn')) {
+
+						var dropdowns = document
+								.getElementsByClassName("dropdown-content");
+						var i;
+						for (i = 0; i < dropdowns.length; i++) {
+							var openDropdown = dropdowns[i];
+							if (openDropdown.classList.contains('show')) {
+								openDropdown.classList.remove('show');
+							}
+						}
+					}
 				}
 			</script>
 		</div>

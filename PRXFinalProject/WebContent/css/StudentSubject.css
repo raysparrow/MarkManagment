@@ -7,7 +7,8 @@ table{
 }
 
 .semester{
-    margin-top:10px;
+    width:100%;
+    display: inline-block;
 }
 
 .Content {
@@ -102,3 +103,51 @@ th, td {
     padding: 5px;
     text-align: left;    
 }
+.dSemester {
+    float: left;
+    width:49%;
+}
+.dropbtn {
+    color: white !important;
+    padding: 15px 40px 15px 40px !important;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: #333;
+}
+
+.dropbtn:focus {
+    background-color: #333;
+}
+.dropbtn:hover{
+     background-color: green !important;
+}
+.dropdown {
+    margin-top:5px;
+    position: relative;
+    display: inline-block;
+    background-color:#333;
+    float: right;
+    width:10%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
