@@ -60,10 +60,10 @@
 			<table id="homeTBL">
 				<thead>
 				<tr>
-					<th onclick="w3.sortHTML('#homeTBL', '.subject', 'td:nth-child(1)')">Subject ID</th>
-					<th onclick="w3.sortHTML('#homeTBL', '.subject', 'td:nth-child(2)')">Subject Name</th>
-					<th onclick="w3.sortHTML('#homeTBL', '.subject', 'td:nth-child(3)')">Class Name</th>
-					<th onclick="w3.sortHTML('#homeTBL', '.subject', 'td:nth-child(4)')">Semester</th>
+					<th onclick="w3.sortHTML('#homeTBL', '.subject', 'td:nth-child(1)')">Subject ID<i class="fa fa-sort"></i></th>
+					<th onclick="w3.sortHTML('#homeTBL', '.subject', 'td:nth-child(2)')">Subject Name<i class="fa fa-sort"></i></th>
+					<th onclick="w3.sortHTML('#homeTBL', '.subject', 'td:nth-child(3)')">Class Name<i class="fa fa-sort"></i></th>
+					<th onclick="w3.sortHTML('#homeTBL', '.subject', 'td:nth-child(4)')">Semester<i class="fa fa-sort"></i></th>
 				</tr>
 				</thead>
 				<tbody id="tbodyS">
