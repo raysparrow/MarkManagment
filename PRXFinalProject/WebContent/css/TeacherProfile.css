@@ -22,14 +22,6 @@
     width: 100%;
 }
 
-#name {
-    display: inline;
-}
-
-#phone {
-    display: inline;
-}
-
-#mail {
+#inlineStyle{
     display: inline;
 }

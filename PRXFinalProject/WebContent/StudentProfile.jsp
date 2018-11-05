@@ -13,11 +13,16 @@
 </head>
 <body>
 	<%
+	//get user is signing in
+			String email = (String) session.getAttribute("email");
+			//check Signing in
+			if (email == null || email.equals("")) {
+				response.sendRedirect("Logout.jsp");
+			} else {
 		FunctionJAXB functionJAXB = new FunctionJAXB();
-		String studentID = "SE11111";
-
 		//Get Student Info
-		Student student = functionJAXB.getStudentByID(studentID);
+		Student student = functionJAXB.getStudentByEmail(email);
+		String studentID = student.getStudentID();
 	%>
 	<div class="wrap">
 		<div id="header">
@@ -28,7 +33,7 @@
 					<%=student.getStudentName()%></div>
 				<div class="vl left margin_top_40px margin_left_5"></div>
 				<div id="log" class="left margin_top_40px margin_left_5">
-					<a href="#">Logout</a>
+					<a href="Logout.jsp">Logout</a>
 				</div>
 			</div>
 		</div>
@@ -71,6 +76,7 @@
 			<img class="img_profile ava" src="img/ava1.jpg"
 				alt="Avatar of Student" />
 		</div>
+		<%} %>
 	</div>
 </body>
 </html>

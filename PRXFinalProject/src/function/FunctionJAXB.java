@@ -253,4 +253,16 @@ public class FunctionJAXB {
 		}
 		return null;
 	}
+	
+	//get subject by shortName and semester
+			public Subject getSubjectByName(String shortName, String semester, int classId) {
+				List<Subject> subjects = getAllSubjects();
+				Subject result = new Subject();
+				for (int i = 0; i < subjects.size(); i++) {
+					if (subjects.get(i).getShortName().equals(shortName) && subjects.get(i).getSemester().equals(semester) && subjects.get(i).getClassID() == classId) {
+						result = subjects.get(i);
+					}
+				}
+				return result;
+			}
 }

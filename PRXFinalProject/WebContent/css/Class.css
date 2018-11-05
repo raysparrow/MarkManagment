@@ -4,7 +4,7 @@
     border: 1px solid #ccc;
     background-color: #f1f1f1;
     box-shadow: 0px 0px 16px 0px #888888;
-    height: 400px;
+    height: 430px;
     margin-top:20px;
 }
 
@@ -13,7 +13,6 @@
     display: block;
     background-color: inherit;
     color: black;
-    padding: 14px 16px;
     width: 100%;
     border: none;
     outline: none;
@@ -21,6 +20,7 @@
     cursor: pointer;
     transition: 0.3s;
     font-size: 17px;
+    padding: 16px 26px;
 }
 
 /* Change background color of buttons on hover */
@@ -54,16 +54,6 @@
     height:30px;
     font-size:20px;
 }
-td,
-th{
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even){
-    background-color: #dddddd;
-}
 #subjectId{
     width:100%
 }
@@ -77,13 +67,14 @@ tr:nth-child(even){
     font-size: 16px;
     border: none;
     cursor: pointer;
+    background-color:green !important;
 }
 
 .dropbtn:focus {
     background-color: #333;
 }
 .dropbtn:hover{
-     background-color: green !important;
+     background-color: #ddd !important;
 }
 .dropdown {
     margin-top:5px;
@@ -112,3 +103,101 @@ tr:nth-child(even){
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+#homeTBL {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#homeTBL tbody {
+    display:block;
+    height:277px;
+    overflow:auto;
+}
+
+#homeTBL thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+
+#homeTBL td, #homeTBL th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#homeTBL tr:nth-child(even){background-color: #f2f2f2;}
+
+#homeTBL tr:hover {background-color: #ddd;}
+
+#homeTBL th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: green;
+    color: white;
+}
+.center {
+    text-align: center;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    margin: 0 4px;
+    background-color:green;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+.pagination button{
+    background-color:green;
+    padding: 8px 40px 8px 30px !important;
+    width : 100%;
+}
+.dropUpbtn {
+    background-color: #3498DB;
+    color: white !important;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropup {
+    position: relative;
+    display: inline-block;
+}
+
+.dropup-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1 !important;
+    bottom: 30px;
+    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropup-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color:#f1f1f1 !important;
+    min-width: 100%;
+}
+
+.dropup-content a:hover {background-color: #ddd !important}
+
+.dropup:hover .dropup-content {
+    display: block;
+}
+
+.dropup:hover .dropUpbtn {
+    background-color: #2980B9;
+}

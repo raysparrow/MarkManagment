@@ -1,19 +1,40 @@
 .content{
     box-shadow: 0px 0px 16px 0px #888888;
-    height: 400px;
+    height: 555px;
     margin-top:20px;
 }
 
-#studentID {
-    display: inline;
+.studentID {
+    font-size: 27px;
+    margin-bottom: 29px;
 }
-#studentName {
+.studentName {
     display: inline;
+    font-size: 55px;
+    line-height: 75px;
 }
 #subject {
     display: inline;
 }
 #className{
+    display: inline;
+}
+#pt1{
+    display: inline;
+}
+#pt2{
+    display: inline;
+}
+#ass1{
+    display: inline;
+}
+#ass2{
+    display: inline;
+}
+#final{
+    display: inline;
+}
+#total{
     display: inline;
 }
 .leftStudent{
@@ -28,9 +49,66 @@
     float: right;
     width: 60%;
     margin-top: 30px;
-    font-size: 25px;
-    line-height: 60px;
 }
 #img1{
     width: 100%;
+}
+table {
+    margin-top: 10px;
+}
+table tr td {
+    border: 1px solid;
+    width: 200px;
+    text-align: center;
+}
+table tr th {
+    border: 1px solid;
+    width: 200px;
+    text-align: center;
+}
+.filterStudent{
+    display: block;
+    padding-bottom: 70px;
+    padding-top: 18px;
+    padding-left: 18px;
+    background-color: #5a5a5a;
+    color: white;
+}
+.itemsFilter{
+    float: left;
+    margin: 0px 6px;
+    width: 140px;
+}
+.btnFilter{
+    float: left;
+    margin: 0px 6px;
+    width: 90px;
+    background-color: #d43f3a;
+    border-color: #c9302c;
+    display: inline-block;
+    padding: 8px 12px;
+    margin-top: 18px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+}
+select {
+    width: 100%;
+    height: 38px;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    vertical-align: middle;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }

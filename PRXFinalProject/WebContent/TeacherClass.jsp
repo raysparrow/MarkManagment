@@ -15,28 +15,32 @@
 </head>
 <body>
 	<%
-		FunctionJAXB functionJAXB = new FunctionJAXB();
-		String teacherID = "sonnt5";
-		//get short name id
-				int shortNameId = 0;
-		try{
-				if(request.getParameter("shortNameId") != null){
-					shortNameId = Integer.parseInt(request.getParameter("shortNameId"));
-				}
-		}catch(Exception e){
-			System.out.println(e);
-		}
-		//Get Teacher Info
-		Teacher teacher = functionJAXB.getTeacherById(teacherID) ;	
-		//Get all subject of teacher
-		List<Subject> listSubject = functionJAXB.getSubjectByTeacherId(teacherID);
-		//get list short name
-		List<String> listShortName = functionJAXB.getListShortName(listSubject);
-		//get group classes by short name
-		List<Class> groupClasses = functionJAXB.groupClassByShortName(listShortName.get(shortNameId).toString(), teacherID);
-		//get group subject by short name
-		List<Subject> listShortSubjects = functionJAXB.groupSubjectByShortNameTeacherId(listShortName.get(shortNameId).toString(), teacherID);
-		
+		//get user is signing in
+			String email = (String) session.getAttribute("email");
+		//check Signing in
+			if(email == null || email.equals("")){
+			response.sendRedirect("Logout.jsp");
+			} else {
+			FunctionJAXB functionJAXB = new FunctionJAXB();
+			//Get teacher's information
+			Teacher teacher = functionJAXB.getTeacherByEmail(email);
+			String teacherID = teacher.getTeacherID();
+			//Get all subject of teacher
+			List<Subject> listSubject = functionJAXB.getSubjectByTeacherId(teacherID);
+			//get list short name
+			List<String> listShortName = functionJAXB.getListShortName(listSubject);
+			//get short name id
+			String shortName = listShortName.get(0).toString();
+			List<Class> groupClasses = null;
+			List<Subject> listShortSubjects = null;
+			if(request.getParameter("shortName") != null){
+				shortName = request.getParameter("shortName");
+			}
+			//get group classes by short name
+			groupClasses = functionJAXB.groupClassByShortName(shortName, teacherID);
+			//get group subject by short name
+			listShortSubjects = functionJAXB.groupSubjectByShortNameTeacherId(shortName, teacherID);
+			
 	%>
 	<div class="wrap">
 		<div id="header">
@@ -47,7 +51,7 @@
 					<%=teacher.getTeacherName()%></div>
 				<div class="vl left margin_top_40px margin_left_5"></div>
 				<div id="log" class="left margin_top_40px margin_left_5">
-					<a href="#">Logout</a>
+					<a href="Logout.jsp">Logout</a>
 				</div>
 			</div>
 		</div>
@@ -58,7 +62,7 @@
 		<div class="tab">
 			<div id="subjectId" class="left">
 				<div class="left width70 margin_left_5">
-					<h3><%=listShortName.get(shortNameId).toString()%></h3>
+					<h3><%=shortName%></h3>
 				</div>
 				<div class="left">
 					<div class="dropdown">
@@ -78,7 +82,7 @@
 			<div id="buttonClass" class="left">
 				<%
 					for(int i=0;i<listShortSubjects.size();i++){
-					Class clazz = functionJAXB.getClassById(listShortSubjects.get(i).getClassID());
+																			Class clazz = functionJAXB.getClassById(listShortSubjects.get(i).getClassID());
 				%>
 				<button class="tablinks"
 					onclick="openClass(event, '<%=clazz.getClassName()%>')"
@@ -89,31 +93,54 @@
 			</div>
 			<%
 				for(int i=0;i<listShortSubjects.size();i++){
-											Class clazz = functionJAXB.getClassById(listShortSubjects.get(i).getClassID());
+																		Class clazz = functionJAXB.getClassById(listShortSubjects.get(i).getClassID());
 			%>
 			<div id="<%=clazz.getClassName()%>" class="tabcontent">
 				<table id="homeTBL" class="bang">
-					<tr>
-						<th>Student ID</th>
-						<th>Student Name</th>
-					</tr>
-					<%
-						List<Student> listStudent = functionJAXB.getStudentBySubjectId(listShortSubjects.get(i).getSubjectID());
-																													for(int j=0; j<listStudent.size();j++){
-					%>
-					<tr>
-						<td><a href="#"><%=listStudent.get(j).getStudentID()%></a></td>
-						<td><%=listStudent.get(j).getStudentName()%></td>
-					</tr>
-					<%
-						}
-					%>
+					<thead>
+						<tr>
+							<th>Student ID</th>
+							<th>Student Name</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+							List<Student> listStudent = functionJAXB.getStudentBySubjectId(listShortSubjects.get(i).getSubjectID());
+																																																								for(int j=0; j<listStudent.size();j++){
+						%>
+						<tr>
+							<td><a
+								href="TeacherStudent.jsp?subjectId=<%=listShortSubjects.get(i).getSubjectID()%>&studentId=<%=listStudent.get(j).getStudentID()%>"><%=listStudent.get(j).getStudentID()%></a></td>
+							<td><%=listStudent.get(j).getStudentName()%></td>
+						</tr>
+						<%
+							}
+						%>
+					</tbody>
 				</table>
 			</div>
 			<%
 				}
 			%>
+			<div class="center">
+				<div class="pagination">
+					<a href="#" class="left">&laquo;</a>
+					<div class="dropup left">
+						<button class="dropUpbtn">Semester</button>
+						<div class="dropup-content">
+							<%
+								for(int i=0;i<listShortName.size();i++){
+							%>
+							<a href="TeacherClass.jsp?shortNameId=<%=i%>"><%=listShortName.get(i).toString()%></a>
+							<%
+								}
+							%>
+						</div>
+					</div>
+					<a href="#" class="left">&raquo;</a>
 
+				</div>
+			</div>
 			<script>
 				/* When the user clicks on the button, 
 				 toggle between hiding and showing the dropdown content */
@@ -138,6 +165,7 @@
 					}
 				}
 			</script>
+
 			<script>
 				function openClass(evt, currentClass) {
 					var i, tabcontent, tablinks;
@@ -156,6 +184,9 @@
 
 				document.getElementById("defaultOpen").click();
 			</script>
+			<%
+				}
+			%>
 		</div>
 	</div>
 </body>

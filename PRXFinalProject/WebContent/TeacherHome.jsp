@@ -72,7 +72,7 @@
 					Subject subject = listSubject.get(i);
 				%>
 				<tr class="subject">
-					<td><a href="https://www.w3schools.com/html/"><%=subject.getShortName()%></a></td>
+					<td><a href="TeacherClass.jsp?shortName=<%=subject.getShortName()%>"><%=subject.getShortName()%></a></td>
 					<td><%=subject.getSubjectName()%></td>
 					<%
 						Class clazz = functionJAXB.getClassById(subject.getClassID());
