@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="function.FunctionJAXB"%>
 <%@ page import="objects.*"%>
 <%@ page import="objects.Class"%>
 <%@ page import="java.util.List"%>
+<%@ page import="javax.servlet.http.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,31 +16,42 @@
 <body>
 	<%
 		FunctionJAXB functionJAXB = new FunctionJAXB();
-		String studentID = request.getParameter("studentId");
-		int subjectID=1;
-		if(request.getParameter("subjectId")!=null){
-		subjectID = Integer.parseInt(request.getParameter("subjectId"));
-		}
+		String studentID = "SE11111";
+		int subjectID = 1;
 		
-		String shortName = request.getParameter("subject");
+		
+		String shortName = request.getParameter("shortName");
 		String semester = request.getParameter("semester");
 		String point = request.getParameter("point");
 		
-		//Get Student Info
-		
-		List<StudentSubject> studentSubject = functionJAXB.getStudentSubjectsByStudentId(studentID);
-		Student student = functionJAXB.getStudentByID(studentID);
-		Subject subjects = functionJAXB.getSubjectById(subjectID);
-		Class classes = functionJAXB.getClassById(subjects.getClassID());
-		Subject subjects2 = functionJAXB.getSubjectByName(shortName, semester, classes.getClassID());
-		List<StudentSubject> studentSubject2 = functionJAXB.getStudentSubjectsBySubjectId(subjects2.getSubjectID());
-		Class classes2 = functionJAXB.getClassById(subjects2.getClassID());
+		String email = (String)session.getAttribute("email");
+		//get user is signing in
+				//check Signing in
+				if(email == null || email.equals("")){
+					response.sendRedirect("Logout.jsp");
+				} else {
+					
+					List<StudentSubject> studentSubject = functionJAXB.getStudentSubjectsByStudentId(studentID);
+					Student student = functionJAXB.getStudentByID(studentID);
+					Subject subjects = functionJAXB.getSubjectById(subjectID);
+					//Get teacher's information
+					Teacher teacher = functionJAXB.getTeacherByEmail(email);
+					//Get teacher's subject
+					List<Subject> listSubject = functionJAXB.getSubjectByTeacherId(teacher.getTeacherID());
+					Class classes = functionJAXB.getClassById(subjects.getClassID());
+					Subject subjects2 = functionJAXB.getSubjectByName(shortName, semester, classes.getClassID());
+					List<StudentSubject> studentSubject2 = functionJAXB.getStudentSubjectsBySubjectId(subjects2.getSubjectID());
+					Class classes2 = functionJAXB.getClassById(subjects2.getClassID());
+					
+					
 	%>
 	<div class="wrap">
 		<div id="header">
 			<img id="img" alt="headerIMG" src="img/banner.jpg" />
 			<div id="wel-log" class="left">
-				<div id="wel" class="left margin_top_40px">Welcome, Son</div>
+				<div id="wel" class="left margin_top_40px">
+					Welcome,
+					<%=teacher.getTeacherName()%></div>
 				<div class="vl left margin_top_40px margin_left_5"></div>
 				<div id="log" class="left margin_top_40px margin_left_5">
 					<a href="#">Logout</a>
@@ -47,8 +59,8 @@
 			</div>
 		</div>
 		<div class="navbar">
-			<a href="#home">Home</a>
-			<a class="active" href="TeacherStudent.jsp">Class</a>
+			<a href="TeacherHome.jsp">Home</a>
+			<a class="active" href="TeacherClass.jsp">Class</a>
 			<a href="TeacherProfile.jsp">Profile</a>
 		</div>
 		<div class="content">
@@ -57,10 +69,14 @@
 					<form action="TeacherStudent.jsp" method="post">
 						<div class="itemsFilter">
 							<label>Subject</label>
-							<select name="subject">
-								<option value="PRX301">PRX</option>
-								<option value="MLN101">MNL</option>
-								<option value="MAS291">MAS</option>
+							<select name="shortName">
+							<%
+								for (Subject listSubjectTeacher : listSubject) {
+							%>
+								<option value="<%=listSubjectTeacher.getShortName()%>"><%=listSubjectTeacher.getShortName()%></option>
+								<%
+								}
+							%>
 							</select>
 						</div>
 						<div class="itemsFilter">
@@ -110,22 +126,43 @@
 					<tr>
 						<th>Subject</th>
 						<th>Mark</th>
+						<th>Edit Mark</th>
 					</tr>
 					<tr>
 						<td>Progress Test 1</td>
-						<td><%=list.getPT1()%></td>
+						<form action="Edit.jsp?type=pt1&studentId=<%=list.getStudentID()%>&subjectId=<%=subjects.getSubjectID()%>" method="post">
+							<td><input name="mark" onclick="myFunction(1)" value="<%=list.getPT1()%>"/></td>
+							<td>
+									<button type="submit" id="saveBtn1" disabled>Save</button>
+								</td>
+						</form>
 					</tr>
 					<tr>
 						<td>Progress Test 2</td>
-						<td><%=list.getPT2()%></td>
+						<form action="Edit.jsp?type=pt2&studentId=<%=list.getStudentID()%>&subjectId=<%=subjects.getSubjectID()%>" method="post">
+							<td><input name="mark" onclick="myFunction(2)" value="<%=list.getPT2()%>"/></td>
+							<td>
+									<button type="submit" id="saveBtn2" disabled>Save</button>
+								</td>
+						</form>
 					</tr>
 					<tr>
 						<td>Assignment 1</td>
-						<td><%=list.getASS1()%></td>
+						<form action="Edit.jsp?type=ass1&studentId=<%=list.getStudentID()%>&subjectId=<%=subjects.getSubjectID()%>" method="post">
+							<td><input name="mark" onclick="myFunction(3)" value="<%=list.getASS1()%>"/></td>
+							<td>
+									<button type="submit" id="saveBtn3" disabled>Save</button>
+								</td>
+						</form>
 					</tr>
 					<tr>
 						<td>Assignment 2</td>
-						<td><%=list.getAss2()%></td>
+						<form action="Edit.jsp?type=ass2&studentId=<%=list.getStudentID()%>&subjectId=<%=subjects.getSubjectID()%>" method="post">
+							<td><input name="mark" onclick="myFunction(4)" value="<%=list.getAss2()%>"/></td>
+							<td>
+									<button type="submit" id="saveBtn4" disabled>Save</button>
+								</td>
+						</form>
 					</tr>
 					<tr>
 						<td>Final Exam</td>
@@ -186,22 +223,43 @@
 						<tr>
 							<th>Subject</th>
 							<th>Mark</th>
+							<th>Edit Mark</th>
 						</tr>
 						<tr>
 							<td>Progress Test 1</td>
-							<td><%=StuSubMin.getPT1()%></td>
+							<form action="Edit.jsp?type=pt1&studentId=<%=StuSubMin.getStudentID()%>&subjectId=<%=subjects2.getSubjectID()%>&shortName=<%=shortName%>&semester=<%=semester %>&point=<%=point %>" method="post">
+								<td><input name="mark" onclick="myFunction(1)" value="<%=StuSubMin.getPT1()%>"/></td>
+								<td>
+									<button type="submit" id="saveBtn1" disabled>Save</button>
+								</td>
+							</form>
 						</tr>
 						<tr>
 							<td>Progress Test 2</td>
-							<td><%=StuSubMin.getPT2()%></td>
+							<form action="Edit.jsp?type=pt2&studentId=<%=StuSubMin.getStudentID()%>&subjectId=<%=subjects2.getSubjectID()%>&shortName=<%=shortName%>&semester=<%=semester %>&point=<%=point %>" method="post">
+								<td><input name="mark" onclick="myFunction(2)" value="<%=StuSubMin.getPT2()%>"/></td>
+								<td>
+									<button type="submit" id="saveBtn2" disabled>Save</button>
+								</td>
+							</form>
 						</tr>
 						<tr>
 							<td>Assignment 1</td>
-							<td><%=StuSubMin.getASS1()%></td>
+							<form action="Edit.jsp?type=ass1&studentId=<%=StuSubMin.getStudentID()%>&subjectId=<%=subjects2.getSubjectID()%>&shortName=<%=shortName%>&semester=<%=semester %>&point=<%=point %>" method="post">
+								<td><input name="mark" onclick="myFunction(3)" value="<%=StuSubMin.getASS1()%>"/></td>
+								<td>
+									<button type="submit" id="saveBtn3" disabled>Save</button>
+								</td>
+							</form>
 						</tr>
 						<tr>
 							<td>Assignment 2</td>
-							<td><%=StuSubMin.getAss2()%></td>
+							<form action="Edit.jsp?type=ass2&studentId=<%=StuSubMin.getStudentID()%>&subjectId=<%=subjects2.getSubjectID()%>&shortName=<%=shortName%>&semester=<%=semester %>&point=<%=point %>" method="post">
+								<td><input name="mark" onclick="myFunction(4)" value="<%=StuSubMin.getAss2()%>"/></td>
+								<td>
+									<button type="submit" id="saveBtn4" disabled>Save</button>
+								</td>
+							</form>
 						</tr>
 						<tr>
 							<td>Final Exam</td>
@@ -234,30 +292,43 @@
 						<tr>
 							<th>Subject</th>
 							<th>Mark</th>
-							<th>Edit</th>
+							<th>Edit Mark</th>
 						</tr>
 						<tr>
 							<td>Progress Test 1</td>
-							<td><%=StuSubMax.getPT1()%></td>
-							<td>
-								<button onclick=functionJAXB.editMark()>Edit</button>
-								<button onclick=functionJAXB.editMark()>Save</button>
-							</td>
+							<form action="Edit.jsp?type=pt1&studentId=<%=StuSubMax.getStudentID()%>&subjectId=<%=subjects2.getSubjectID()%>&shortName=<%=shortName%>&semester=<%=semester %>&point=<%=point %>" method="post">
+								<td><input name="mark" onclick="myFunction(1)" value="<%=StuSubMax.getPT1()%>"/></td>
+								<td>
+									<button type="submit" id="saveBtn1" disabled>Save</button>
+								</td>
+							</form>
 						</tr>
 						<tr>
 							<td>Progress Test 2</td>
-							<td><%=StuSubMax.getPT2()%></td>
-							<td><button onclick=functionJAXB.editMark()>Edit</button></td>
+							<form action="Edit.jsp?type=pt2&studentId=<%=StuSubMax.getStudentID()%>&subjectId=<%=subjects2.getSubjectID()%>&shortName=<%=shortName%>&semester=<%=semester %>&point=<%=point %>" method="post">
+								<td><input name="mark" onclick="myFunction(2)" value="<%=StuSubMax.getPT2()%>"/></td>
+								<td>
+									<button type="submit" id="saveBtn2" disabled>Save</button>
+								</td>
+							</form>
 						</tr>
 						<tr>
 							<td>Assignment 1</td>
-							<td><%=StuSubMax.getASS1()%></td>
-							<td><button onclick=functionJAXB.editMark()>Edit</button></td>
+							<form action="Edit.jsp?type=ass1&studentId=<%=StuSubMax.getStudentID()%>&subjectId=<%=subjects2.getSubjectID()%>&shortName=<%=shortName%>&semester=<%=semester %>&point=<%=point %>" method="post">
+								<td><input name="mark" onclick="myFunction(3)" value="<%=StuSubMax.getASS1()%>"/></td>
+								<td>
+									<button type="submit" id="saveBtn3" disabled>Save</button>
+								</td>
+							</form>
 						</tr>
 						<tr>
 							<td>Assignment 2</td>
-							<td><%=StuSubMax.getAss2()%></td>
-							<td><button onclick=functionJAXB.editMark()>Edit</button></td>
+							<form action="Edit.jsp?type=ass2&studentId=<%=StuSubMax.getStudentID()%>&subjectId=<%=subjects2.getSubjectID()%>&shortName=<%=shortName%>&semester=<%=semester %>&point=<%=point %>" method="post">
+								<td><input name="mark" onclick="myFunction(4)" value="<%=StuSubMax.getAss2()%>"/></td>
+								<td>
+									<button type="submit" id="saveBtn4" disabled>Save</button>
+								</td>
+							</form>
 						</tr>
 						<tr>
 							<td>Final Exam</td>
@@ -270,18 +341,46 @@
 						
 					</table>
 						<%
+					} else {
+						%>
+						<h3>can not found!</h3>
+						<%
 					}
 				}
+				}
 				%>
+				
 			</div>
 		</div>
 	</div>
 	<script>
-		myFunction();
-		function myFunction() {
-		    var x = document.getElementById("subject").value;
-		    document.getElementById("demo").innerHTML = x;
+		var i;
+		function myFunction(i) {
+			if (i == 1){
+				document.getElementById("saveBtn1").disabled = false;
+			} else if (i == 2){
+				document.getElementById("saveBtn2").disabled = false;
+			} else if (i == 3){
+				document.getElementById("saveBtn3").disabled = false;
+			} else if (i == 4){
+				document.getElementById("saveBtn4").disabled = false;
+			} 
 		}
-</script>
+		
+		function myFunction2(i) {
+			if (i == 1){
+				document.getElementById("saveBtn1").disabled = true;
+			} else if (i == 2){
+				document.getElementById("saveBtn2").disabled = true;
+			} else if (i == 3){
+				document.getElementById("saveBtn3").disabled = true;
+			} else if (i == 4){
+				document.getElementById("saveBtn4").disabled = true;
+			}
+		}
+		
+		
+		
+	</script>
 </body>
 </html>

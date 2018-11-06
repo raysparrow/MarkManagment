@@ -253,16 +253,95 @@ public class FunctionJAXB {
 		}
 		return null;
 	}
+
+	// get subject by shortName and semester
+	public Subject getSubjectByName(String shortName, String semester,
+			int classId) {
+		List<Subject> subjects = getAllSubjects();
+		Subject result = new Subject();
+		for (int i = 0; i < subjects.size(); i++) {
+			if (subjects.get(i).getShortName().equals(shortName)
+					&& subjects.get(i).getSemester().equals(semester)
+					&& subjects.get(i).getClassID() == classId) {
+				result = subjects.get(i);
+			}
+		}
+		return result;
+	}
 	
-	//get subject by shortName and semester
-			public Subject getSubjectByName(String shortName, String semester, int classId) {
-				List<Subject> subjects = getAllSubjects();
-				Subject result = new Subject();
-				for (int i = 0; i < subjects.size(); i++) {
-					if (subjects.get(i).getShortName().equals(shortName) && subjects.get(i).getSemester().equals(semester) && subjects.get(i).getClassID() == classId) {
-						result = subjects.get(i);
+	//get list semester by teacherId
+	public List<String> getSemestersByTeacherId(String teacherId){
+		List<Subject> subjects = getSubjectByTeacherId(teacherId);
+		List<String> semesters = new ArrayList<String>();
+		for(int i=0;i<subjects.size();i++){
+			boolean check = false;
+			if(semesters.size()==0){
+				semesters.add(subjects.get(i).getSemester());
+			}else{
+				for(int j = 0 ; j< semesters.size();j++){
+					if(semesters.get(j).equals(subjects.get(i).getSemester())){
+						check = true;
+						break;
 					}
 				}
-				return result;
+				if(check==false){
+					semesters.add(subjects.get(i).getSemester());
+				}
 			}
+		}
+		return semesters;
+	}
+	
+	// edit Mark
+	public void editMark(String type, String studentId, int subjectId,
+			double markEdit) throws Exception {
+		try {
+			JAXBContext jc = JAXBContext.newInstance(Infomation.class);
+
+			String path = this.getClass().getClassLoader().getResource("")
+					.getPath();
+			String fullPath = URLDecoder.decode(path, "UTF-8");
+			String pathArr[] = fullPath.split("/WEB-INF/classes/");
+			fullPath = pathArr[0] + File.separator + "data" + File.separator
+					+ "Info.xml";
+			File file = new File(fullPath);
+
+			Infomation infomation = (Infomation) jc.createUnmarshaller()
+					.unmarshal(file);
+			StudentSubjects studentSubjects = infomation.getStudentSubjects();
+			List<StudentSubject> studentSubject = studentSubjects
+					.getStudentSubject();
+			for (int i = 0; i < studentSubject.size(); i++) {
+				if (studentSubject.get(i).getStudentID().equals(studentId)
+						&& studentSubject.get(i).getSubjectID() == subjectId) {
+					if (type.equals("pt1")) {
+						studentSubject.get(i).setPT1(markEdit);
+					} else if (type.equals("pt2")) {
+						studentSubject.get(i).setPT2(markEdit);
+					} else if (type.equals("ass1")) {
+						studentSubject.get(i).setASS1(markEdit);
+					} else {
+						studentSubject.get(i).setAss2(markEdit);
+					}
+				}
+			}
+
+			Marshaller m = jc.createMarshaller();
+			m.marshal(infomation, file);
+		} catch (Exception e) {
+
+		}
+	}
+		
+	//get list subjects by semester and teacherId
+	public List<Subject> getSubjectsBySemesterAndTeacherId(String semester, String teacherId){
+		List<Subject> subjects = getSubjectByTeacherId(teacherId);
+		List<Subject> result = new ArrayList<Subject>();
+		for(int i = 0; i<subjects.size();i++){
+			if(subjects.get(i).getSemester().equals(semester)){
+				result.add(subjects.get(i));
+			}
+		}
+		return result;
+	}
 }

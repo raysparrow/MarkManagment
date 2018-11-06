@@ -25,12 +25,23 @@
 			//Get teacher's information
 			Teacher teacher = functionJAXB.getTeacherByEmail(email);
 			String teacherID = teacher.getTeacherID();
+			
+			//Get all semester of teacher
+			List<String> semesters = functionJAXB.getSemestersByTeacherId(teacherID);
+			
+			//get semester
+			String currentSemester = semesters.get(0).toString();
+			if(request.getParameter("semester") != null){
+				currentSemester = request.getParameter("semester");
+			}
+			
 			//Get all subject of teacher
-			List<Subject> listSubject = functionJAXB.getSubjectByTeacherId(teacherID);
+			List<Subject> listSubject = functionJAXB.getSubjectsBySemesterAndTeacherId(currentSemester, teacherID);
 			//get list short name
 			List<String> listShortName = functionJAXB.getListShortName(listSubject);
 			//get short name id
 			String shortName = listShortName.get(0).toString();
+			
 			List<Class> groupClasses = null;
 			List<Subject> listShortSubjects = null;
 			if(request.getParameter("shortName") != null){
@@ -71,7 +82,7 @@
 							<%
 								for(int i=0;i<listShortName.size();i++){
 							%>
-							<a href="TeacherClass.jsp?shortNameId=<%=i%>"><%=listShortName.get(i).toString()%></a>
+							<a href="TeacherClass.jsp?shortName=<%=listShortName.get(i).toString()%>"><%=listShortName.get(i).toString()%></a>
 							<%
 								}
 							%>
@@ -124,20 +135,18 @@
 			%>
 			<div class="center">
 				<div class="pagination">
-					<a href="#" class="left">&laquo;</a>
 					<div class="dropup left">
-						<button class="dropUpbtn">Semester</button>
+						<button class="dropUpbtn"><%=currentSemester %></button>
 						<div class="dropup-content">
 							<%
-								for(int i=0;i<listShortName.size();i++){
+								for(int i=0;i<semesters.size();i++){
 							%>
-							<a href="TeacherClass.jsp?shortNameId=<%=i%>"><%=listShortName.get(i).toString()%></a>
+							<a href="TeacherClass.jsp?semester=<%=semesters.get(i).toString()%>"><%=semesters.get(i).toString()%></a>
 							<%
 								}
 							%>
 						</div>
 					</div>
-					<a href="#" class="left">&raquo;</a>
 
 				</div>
 			</div>
