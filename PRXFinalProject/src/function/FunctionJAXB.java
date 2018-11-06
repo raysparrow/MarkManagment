@@ -309,19 +309,37 @@ public class FunctionJAXB {
 			Infomation infomation = (Infomation) jc.createUnmarshaller()
 					.unmarshal(file);
 			StudentSubjects studentSubjects = infomation.getStudentSubjects();
+			Students students = infomation.getStudents();
 			List<StudentSubject> studentSubject = studentSubjects
 					.getStudentSubject();
+			List<Student> studentList = students
+					.getStudent();
 			for (int i = 0; i < studentSubject.size(); i++) {
 				if (studentSubject.get(i).getStudentID().equals(studentId)
 						&& studentSubject.get(i).getSubjectID() == subjectId) {
+					Student student = getStudentByID(studentSubject.get(i).getStudentID());
 					if (type.equals("pt1")) {
 						studentSubject.get(i).setPT1(markEdit);
+						studentSubject.get(i).setTotalMark(caculaterTotalMark(studentSubject.get(i)));
+						student.setStudentGPA(caculaterGPA(studentSubject.get(i)));
+						studentList = editStudent(studentList, student);
+						System.out.println(student.getStudentGPA());
+						
 					} else if (type.equals("pt2")) {
 						studentSubject.get(i).setPT2(markEdit);
+						studentSubject.get(i).setTotalMark(caculaterTotalMark(studentSubject.get(i)));
+						student.setStudentGPA(caculaterGPA(studentSubject.get(i)));
+						System.out.println(student.getStudentGPA());
 					} else if (type.equals("ass1")) {
 						studentSubject.get(i).setASS1(markEdit);
+						studentSubject.get(i).setTotalMark(caculaterTotalMark(studentSubject.get(i)));
+						student.setStudentGPA(caculaterGPA(studentSubject.get(i)));
+						System.out.println(student.getStudentGPA());
 					} else {
 						studentSubject.get(i).setAss2(markEdit);
+						studentSubject.get(i).setTotalMark(caculaterTotalMark(studentSubject.get(i)));
+						student.setStudentGPA(caculaterGPA(studentSubject.get(i)));
+						System.out.println(student.getStudentGPA());
 					}
 				}
 			}
@@ -343,5 +361,51 @@ public class FunctionJAXB {
 			}
 		}
 		return result;
+	}
+	
+	// Caculater TotalMark Again
+	public double caculaterTotalMark(StudentSubject studentSub){
+		double totalMark = 0;
+		if(studentSub.toString() != null){
+			double avgAss = studentSub.getASS1()* 0.15 + studentSub.getAss2()* 0.15;
+			double avgPt = studentSub.getPT1()* 0.15 + studentSub.getPT2()* 0.15;
+			totalMark = avgAss + avgPt + studentSub.getFinalExam()* 0.4;
+			return totalMark;
+		}
+		return 0;
+	}
+	
+	//Caculater GPA again
+	public double caculaterGPA(StudentSubject studentSub){
+		double GPA = 0;
+		double total = 0;
+		if(studentSub.toString() != null){
+			List<StudentSubject> studentSubList = getStudentSubjectsByStudentId(studentSub.getStudentID());
+			int count = 0;
+			for(StudentSubject list : studentSubList){
+				Subject subject = getSubjectById(list.getSubjectID());
+				if(list.getStudentID().equals(studentSub.getStudentID())
+						&& list.getSubjectID() == studentSub.getSubjectID()){
+					total += subject.getNumberOfCredit() * studentSub.getTotalMark();
+				}else{
+					total += subject.getNumberOfCredit() * list.getTotalMark();
+				}
+				count+=subject.getNumberOfCredit();
+			}
+			GPA = total/count;
+			System.out.println(GPA);
+			return GPA;
+		}
+		return 0;
+	}
+	//Edit GPA in Student When Change GPA
+	public List<Student> editStudent(List<Student> listStudent, Student student){
+		for(Student list : listStudent){
+			if(list.getStudentID().equals(student.getStudentID())){
+				list = student;
+				break;
+			}
+		}
+		return listStudent;
 	}
 }
