@@ -13,27 +13,32 @@
 </head>
 <body>
 	<%
+	String email = (String)session.getAttribute("email");
+	//get user is signing in
+			//check Signing in
+			if(email == null || email.equals("")){
+				response.sendRedirect("Logout.jsp");
+			} else {
 		FunctionJAXB functionJAXB = new FunctionJAXB();
-		String teacherID = "sonnt5";
 
 		//Get Teacher Info
-		Teacher teacher = functionJAXB.getTeacherById(teacherID);
+		Teacher teacher = functionJAXB.getTeacherByEmail(email);
 	%>
 	<div class="wrap">
 		<div id="header">
 			<img id="img" alt="headerIMG" src="img/banner.jpg" />
 			<div id="wel-log" class="left">
-				<div id="wel" class="left margin_top_40px">Welcome, Son</div>
+				<div id="wel" class="left margin_top_40px">Welcome, <%= teacher.getTeacherName() %></div>
 				<div class="vl left margin_top_40px margin_left_5"></div>
 				<div id="log" class="left margin_top_40px margin_left_5">
-					<a href="#">Logout</a>
+					<a href="Logout.jsp">Logout</a>
 				</div>
 			</div>
 		</div>
 		<div class="navbar">
-			<a href="TeacherHome.html">Home</a> 
-			<a href="class.html">Class</a>
-			<a class="active" href="TeacherProfile.jsp">Profile</a>
+			<a href="TeacherHome.jsp">Home</a> 
+			<a href="TeacherClass.jsp">Class</a>
+			<a class="active" href="#">Profile</a>
 		</div>
 		<div class="content">
 			<div class="imgTeacher ava">
@@ -59,5 +64,6 @@
 			</div>
 		</div>
 	</div>
+	<%} %>
 </body>
 </html>

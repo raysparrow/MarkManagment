@@ -322,7 +322,11 @@ public class FunctionJAXB {
 						studentSubject.get(i).setPT1(markEdit);
 						studentSubject.get(i).setTotalMark(caculaterTotalMark(studentSubject.get(i)));
 						student.setStudentGPA(caculaterGPA(studentSubject.get(i)));
-						studentList = editStudent(studentList, student);
+						for(int j=0;j<studentList.size();j++){
+							if(studentList.get(j).getStudentID().equals(studentSubject.get(i).getStudentID())){
+								studentList.get(j).setStudentGPA(caculaterGPA(studentSubject.get(i)));
+							}
+						}
 						System.out.println(student.getStudentGPA());
 						
 					} else if (type.equals("pt2")) {
